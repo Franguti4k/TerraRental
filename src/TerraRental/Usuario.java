@@ -1,5 +1,10 @@
 package TerraRental;
-
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Pedro Zuñeda Diego
+ * @author Santiago Valderrama Flores
+ */
 public abstract class Usuario {
     private String DNI;
     private String nombre;
