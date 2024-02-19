@@ -1,1 +1,2 @@
-g
+Aplicación de TerraRental
+
