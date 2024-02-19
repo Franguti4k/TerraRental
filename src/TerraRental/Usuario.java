@@ -12,13 +12,13 @@ public abstract class Usuario {
     private String pistaPassword;
     /**
      * Constructor de la clase Usuario
-     * @param dni DNI del usuario
+     * @param DNI DNI del usuario
      * @param nombre Nombre del usuario
      * @param password Contraseña del usuario
      * @param pistaPassword Pista de la contraseña del usuario
      */
-    public Usuario(String dni, String nombre, String password, String pistaPassword) {
-        this.DNI = dni;
+    public Usuario(String DNI, String nombre, String password, String pistaPassword) {
+        this.DNI = DNI;
         this.nombre = nombre;
         this.password = password;
         this.pistaPassword = pistaPassword;
