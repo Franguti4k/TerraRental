@@ -207,4 +207,32 @@ public class Vehiculo {
      * @param matricula recibe la matricula
      */
     public void setMatricula(String matricula) { this.matricula = matricula; }
+
+    /**
+     * Metodo toString que devuelve una cadena con los atributos del libro
+     * @return devuelve una cadena con los atributos del libro
+     */
+    public String toArchivoString(){ return categoria + "," + marca + "," + modelo + "," + precio + "," + tipo + "," + cambio + "," + litros + "," + caballos + "," + color + "," + kilometraje + "," + matricula; }
+
+    /**
+     * Metodo fromString que recibe una cadena y devuelve un vehiculo
+     * @param linea cadena con los atributos del vehiculo
+     * @return devuelve un vehiculo
+     */
+    public static Vehiculo fromString(String linea) {
+        String[] partes = linea.split(",");
+        Categoria categoria = Categoria.valueOf(partes[0]);
+        String marca = partes[1];
+        String modelo = partes[2];
+        int precio = Integer.parseInt(partes[3]);
+        Tipo tipo = Tipo.valueOf(partes[4]);
+        Cambio cambio = Cambio.valueOf(partes[5]);
+        int litros = Integer.parseInt(partes[6]);
+        int caballos = Integer.parseInt(partes[7]);
+        String color = partes[8];
+        double kilometraje = Double.parseDouble(partes[9]);
+        String matricula = partes[10];
+        return new Vehiculo(categoria, marca, modelo, precio, tipo, cambio, litros, caballos, color, kilometraje, matricula);
+    }
+
 }

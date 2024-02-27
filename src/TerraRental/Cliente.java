@@ -24,9 +24,46 @@ public class Cliente extends Usuario{
     }
 
     /**
+     * Get de vehiculoAlquilado
+     * @return devuelve vehiculoAlquilado
+     */
+    public Vehiculo getVehiculoAlquilado() {
+        return vehiculoAlquilado;
+    }
+
+    /**
+     * set de vehiculoAlquilado
+     * @param vehiculoAlquilado recibe vehiculoAlquilado
+     */
+    public void setVehiculoAlquilado(Vehiculo vehiculoAlquilado) {
+        this.vehiculoAlquilado = vehiculoAlquilado;
+    }
+
+    /**
      * Metodo Metodo toArchivoString que devuelve un string con los datos del cliente
      * @return Devuelve un string con los datos del cliente
      */
+
+    //Implementar metodos de cliente: CambiarPassword, Selección de categoría, Detalles del vehículo, Selección de fechas de alquiler, Reserva y pago
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public String toArchivoString() {
         // Convierte los libros reservados en una cadena
         String reservados = "";

@@ -41,6 +41,38 @@ public class GestorDeArchivos {
         }
         return clientes;
     }
+
+    /**
+     * Metodo para guardar los vehiculos en un archivo
+     * @param vehiculos ArrayList de vehiculos
+     */
+    public static void guardarVehiculos(ArrayList<Vehiculo> vehiculos) {
+        try (PrintWriter out = new PrintWriter(new FileWriter(ARCHIVO_VEHICULOS))){
+            for(Vehiculo vehiculo : vehiculos){
+                out.println(vehiculo.toArchivoString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Metodo cargarVehiculos que carga los vehiculos de un archivo
+     * @return devuelve un ArrayList de vehiculos
+     */
+    public  static ArrayList<Vehiculo> cargarVehiculos(){
+        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+        try (Scanner scanner = new Scanner(new File(ARCHIVO_VEHICULOS))){
+            while (scanner.hasNextLine()){
+                String linea = scanner.nextLine();
+                vehiculos.add(Vehiculo.fromString(linea));
+            }
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+        return vehiculos;
+    }
 }
 
-//Falta guardarVehiculos y cargarVehiculos
+
+
