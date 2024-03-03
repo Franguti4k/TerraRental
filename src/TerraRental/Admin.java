@@ -72,6 +72,15 @@ public class Admin extends Usuario implements Menus{
     }
 
     /**
+     * Metodo para inicializar el sistema
+     * Carga los clientes y vehiculos de los archivos
+     */
+    public void inicializarSistema(){
+        setClientes(GestorDeArchivos.CargarClientes());
+        setVehiculos(GestorDeArchivos.cargarVehiculos());
+    }
+
+    /**
      * Metodo que muestra el menu de administrador
      * @param Clientes ArrayList de clientes
      * @param Vehiculos ArrayList de Vehiculos
