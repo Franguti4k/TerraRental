@@ -1,6 +1,7 @@
 package TerraRental;
 
 import java.io.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,6 +39,8 @@ public class GestorDeArchivos {
             }
         }catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
         }
         return clientes;
     }

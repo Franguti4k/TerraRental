@@ -1,5 +1,6 @@
 package TerraRental;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
@@ -101,50 +102,54 @@ public class Cliente extends Usuario implements Menus{
      * @return Devuelve un string con los datos del cliente
      */
     public String toArchivoString() {
-        // Convierte los libros reservados en una cadena
+        // Convierte los vehiculos reservados en una cadena
         String reservados = "";
+        String fechaNac = "";
+        String fechaCad = "";
 
         Vehiculo vehiculo = vehiculoAlquilado;
-        // Convierte cada libro en una cadena con el formato ISBN|Título|Autor
-        String vehiculoInfo = vehiculo.getCategoria() + "|" + vehiculo.getMarca() + "|" + vehiculo.getModelo() + "|" + vehiculo.getMatricula();
+        // Convierte cada vehiculo en una cadena con el formato categoria|marca|modelo|matricula
+       // String vehiculoInfo = vehiculo.getCategoria() + "," + vehiculo.getMarca() + "," + vehiculo.getModelo() + "," + vehiculo.getMatricula();
 
-        // Añade el libro a la cadena de reservados
-        reservados += vehiculoInfo;
+        // Añade el vehiculo a la cadena de reservados
+        //reservados += vehiculoInfo;
 
-        // Devuelve una cadena con el formato DNI,nombre,password,pistaPassword y con los libros reservados preparados anteriormente
-        return getDNI() + "," + getNombre() + "," + getPistaPassword() + "," + getPistaPassword() + "," + reservados;
+        Fecha fecha1 = fecha_Nacimiento;
+        fechaNac = fecha1.getDia() + "," + fecha1.getMes() + "," + fecha1.getAnyo();
+        Fecha fecha2 = cadCarnet;
+        fechaCad = fecha2.getDia() + "," + fecha2.getMes() + "," + fecha2.getAnyo();
+
+        // Devuelve una cadena con el formato DNI,nombre,password,pistaPassword y con los vehiculos reservados preparados anteriormente
+        return getDNI() + "," + getNombre() + "," + getPistaPassword() + "," + getPistaPassword() + "," + fechaNac + "," + fechaCad + reservados;
     }
 
     /**
-     * Metodo fromString que crea un cliente a partir de una linea del archivo de clientes (no terminado)
-     * @param linea Linea de texto
-     * @return Devuelve un usuario
+     * Método estático para crear un objeto Cliente a partir de un String.
+     * Este método recibe una cadena de texto que contiene los datos del cliente y crea un objeto Cliente.
+     * El formato esperado para el String debe ser: DNI,nombre,password,pistaPassword,diaNacimiento,mesNacimiento,anioNacimiento,diaCadCarnet,mesCadCarnet,anioCadCarnet
+     * @param linea La cadena de texto que contiene los datos del cliente.
+     * @return Un objeto Cliente creado a partir de la cadena de texto proporcionada.
+     * @throws ParseException Si ocurre un error al analizar la cadena de texto.
      */
-    public static Cliente fromString(String linea) {
-        // Divide la línea por comas y crea un cliente con los datos
+    public static Cliente fromString(String linea) throws ParseException {
         String[] partes = linea.split(",");
-        Cliente cliente;
-        if (partes.length > 6 && !partes[6].isEmpty()) {
-            cliente = new Cliente(partes[0], partes[1], partes[2], partes[3], null, null, null);
-            String[] reserva = partes[6].split(";");
+        String DNI = partes[0];
+        String nombre = partes[1];
+        String password = partes[2];
+        String pistaPassword = partes[3];
+        int diaNacimiento = Integer.parseInt(partes[4]);
+        int mesNacimiento = Integer.parseInt(partes[5]);
+        int anioNacimiento = Integer.parseInt(partes[6]);
+        int diaCadCarnet = Integer.parseInt(partes[7]);
+        int mesCadCarnet = Integer.parseInt(partes[8]);
+        int anioCadCarnet = Integer.parseInt(partes[9]);
 
-            for (String alquilado : reserva) {
-                String[] detallesVehiculo = alquilado.split("\\|");
-                Categoria categoria = Categoria.valueOf(detallesVehiculo[0]);
-                int precio = Integer.parseInt(detallesVehiculo[3]);
-                Tipo tipo = Tipo.valueOf(detallesVehiculo[4]);
-                Cambio cambio = Cambio.valueOf(detallesVehiculo[5]);
-                int litros = Integer.parseInt(detallesVehiculo[6]);
-                int caballos = Integer.parseInt(detallesVehiculo[7]);
-                double kilometraje = Double.parseDouble(detallesVehiculo[9]);
-                cliente.vehiculoAlquilado = new Vehiculo(categoria, detallesVehiculo[1], detallesVehiculo[2], precio,tipo,cambio,litros,caballos,detallesVehiculo[8],kilometraje,detallesVehiculo[10]);
-            }
+        Fecha fechaNacimiento = new Fecha(diaNacimiento, mesNacimiento, anioNacimiento);
+        Fecha fechaCadCarnet = new Fecha(diaCadCarnet, mesCadCarnet, anioCadCarnet);
 
-        } else {
-            cliente = new Cliente(partes[0], partes[1], partes[2], partes[3], null, null, null);
-        }
-        return cliente;
+        return new Cliente(DNI, nombre, password, pistaPassword, fechaNacimiento, fechaCadCarnet, null);
     }
+
     @Override
     public void Menu(ArrayList<Cliente> Clientes, ArrayList<Vehiculo> Vehiculos) {
 
