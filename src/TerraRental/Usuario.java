@@ -24,6 +24,8 @@ public abstract class Usuario {
         this.pistaPassword = pistaPassword;
     }
 
+
+
     /**
      * Metodo getDNI
      * @return devuelve el DNI del usuario

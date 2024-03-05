@@ -11,7 +11,10 @@ import java.util.ArrayList;
 public class Cliente extends Usuario implements Menus{
 
 
+    private Fecha fecha_Nacimiento;
+    private Fecha cadCarnet;
     private Vehiculo vehiculoAlquilado;
+
 
 
     /**
@@ -20,12 +23,28 @@ public class Cliente extends Usuario implements Menus{
      * @param nombre Nombre del cliente
      * @param password contraseña del cliente
      * @param pistaPassword Pista de la contraseña del cliente
+     * @param fecha_Nacimiento fecha de nacimiento
+     * @param cadCarnet fecha de caducidad del carnet de conducir
      * @param vehiculoAlquilado vehiculo alquilado por el cliente
      */
-    public Cliente(String DNI, String nombre, String password, String pistaPassword, Vehiculo vehiculoAlquilado) {
+    public Cliente(String DNI, String nombre, String password, String pistaPassword, Fecha fecha_Nacimiento, Fecha cadCarnet, Vehiculo vehiculoAlquilado) {
         super(DNI, nombre, password, pistaPassword);
+        this.fecha_Nacimiento = fecha_Nacimiento;
+        this.cadCarnet = cadCarnet;
         this.vehiculoAlquilado = vehiculoAlquilado;
     }
+
+    /**
+     * get de fecha de nacimiento
+     * @return devuelve la fecha de nacimiento
+     */
+    public Fecha getFecha_Nacimiento() { return fecha_Nacimiento; }
+
+    /**
+     * set de fecha de nacimiento
+     * @param fecha_Nacimiento recibe una fecha de nacimiento
+     */
+    public void setFecha_Nacimiento(Fecha fecha_Nacimiento) { this.fecha_Nacimiento = fecha_Nacimiento; }
 
     /**
      * Get de vehiculoAlquilado
@@ -44,9 +63,19 @@ public class Cliente extends Usuario implements Menus{
     }
 
     /**
-     * Metodo Metodo toArchivoString que devuelve un string con los datos del cliente
-     * @return Devuelve un string con los datos del cliente
+     * get de cadCarnet
+     * @return devuelve cadCarnet
      */
+    public Fecha getCadCarnet() { return cadCarnet; }
+
+    /**
+     * set de cadCarnet
+     * @param cadCarnet recibe cadCarnet
+     */
+
+    public void setCadCarnet(Fecha cadCarnet) { this.cadCarnet = cadCarnet; }
+
+
 
     //Implementar metodos de cliente: CambiarPassword, Selección de categoría, Detalles del vehículo, Selección de fechas de alquiler, Reserva y pago
 
@@ -67,7 +96,10 @@ public class Cliente extends Usuario implements Menus{
 
 
 
-
+    /**
+     * Metodo Metodo toArchivoString que devuelve un string con los datos del cliente
+     * @return Devuelve un string con los datos del cliente
+     */
     public String toArchivoString() {
         // Convierte los libros reservados en una cadena
         String reservados = "";
@@ -84,7 +116,7 @@ public class Cliente extends Usuario implements Menus{
     }
 
     /**
-     * Metodo fromString que crea un cliente a partir de una linea del archivo de clientes
+     * Metodo fromString que crea un cliente a partir de una linea del archivo de clientes (no terminado)
      * @param linea Linea de texto
      * @return Devuelve un usuario
      */
@@ -92,9 +124,9 @@ public class Cliente extends Usuario implements Menus{
         // Divide la línea por comas y crea un cliente con los datos
         String[] partes = linea.split(",");
         Cliente cliente;
-        if (partes.length > 4 && !partes[4].isEmpty()) {
-            cliente = new Cliente(partes[0], partes[1], partes[2], partes[3], null);
-            String[] reserva = partes[4].split(";");
+        if (partes.length > 6 && !partes[6].isEmpty()) {
+            cliente = new Cliente(partes[0], partes[1], partes[2], partes[3], null, null, null);
+            String[] reserva = partes[6].split(";");
 
             for (String alquilado : reserva) {
                 String[] detallesVehiculo = alquilado.split("\\|");
@@ -107,8 +139,9 @@ public class Cliente extends Usuario implements Menus{
                 double kilometraje = Double.parseDouble(detallesVehiculo[9]);
                 cliente.vehiculoAlquilado = new Vehiculo(categoria, detallesVehiculo[1], detallesVehiculo[2], precio,tipo,cambio,litros,caballos,detallesVehiculo[8],kilometraje,detallesVehiculo[10]);
             }
+
         } else {
-            cliente = new Cliente(partes[0], partes[1], partes[2], partes[3], null);
+            cliente = new Cliente(partes[0], partes[1], partes[2], partes[3], null, null, null);
         }
         return cliente;
     }
