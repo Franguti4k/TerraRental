@@ -78,11 +78,47 @@ public class Cliente extends Usuario implements Menus{
 
 
 
-    //Implementar metodos de cliente: CambiarPassword, Selección de categoría, Detalles del vehículo, Selección de fechas de alquiler, Reserva y pago
+    //Implementar metodos de cliente:  Selección de categoría, Detalles del vehículo, Selección de fechas de alquiler, Reserva y pago
 
+    /**
+     * Método que cambia la contraseña del usuario actual
+     * @param passwordActual La contraseña actual
+     * @param passwordNueva La nueva contraseña
+     */
+    public void cambiarPassword(String passwordActual, String passwordNueva) throws PasswordIncorrectaException {
+        if (!ComprobarPassword(passwordActual)) {
+            throw new PasswordIncorrectaException("Contraseña actual incorrecta");
+        }
+        setPassword(passwordNueva);
+        System.out.println("Contraseña cambiada correctamente");
+    }
 
+    /**
+     * Excepción propia para cuando la contraseña actual es incorrecta
+     */
+    public class PasswordIncorrectaException extends Exception {
+        public PasswordIncorrectaException(String mensaje) {
+            super(mensaje);
+        }
+    }
 
-
+    /**
+     * Método que busca un usuario por su DNI
+     * @param DNI DNI del usuario
+     * @param Usuarios ArrayList de usuarios
+     * @return El usuario encontrado o null si no se encuentra
+     */
+    public static Cliente buscarUsuarioPorDNI(String DNI, ArrayList<Cliente> Usuarios) {
+        if (Usuarios == null) {
+            return null;
+        }
+        for (Cliente usuario : Usuarios) {
+            if (usuario.getDNI().equals(DNI)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
 
 
 

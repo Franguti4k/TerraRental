@@ -81,6 +81,59 @@ public class Admin extends Usuario implements Menus{
     }
 
     /**
+     * Metodo para añadir un usuario
+     * @param DNI DNI del usuario
+     * @param nombre Nombre del usuario
+     * @param password Contraseña del usuario
+     * @param pistaPassword Pista de la contraseña del usuario
+     * @param fechaNac Fecha de nacimiento
+     * @param fechaCad Fecha de caducidad del carnet
+     * @param Usuarios ArrayList de usuarios de la biblioteca
+     */
+    public void addUsuario(String DNI, String nombre, String password, String pistaPassword, Fecha fechaNac, Fecha fechaCad, ArrayList<Cliente> Usuarios) throws DNIInvalidoException, UsuarioYaExisteException {
+        // Validar el DNI
+        if (!Cliente.validarDNI(DNI)) {
+            throw new DNIInvalidoException("El DNI introducido no es válido.");
+        }
+        // Comprobar si el usuario ya existe
+        for (Cliente usuario : Usuarios) {
+            if (usuario.getDNI().equals(DNI)) {
+                throw new UsuarioYaExisteException("Un usuario con este DNI ya existe.");
+            }
+        }
+        // Crear un nuevo usuario y agregarlo a la lista
+        Cliente nuevoUsuario = new Cliente(DNI, nombre, password, pistaPassword, fechaNac, fechaCad, null);
+        Usuarios.add(nuevoUsuario);
+    }
+
+    /**
+     * Excepcion para cuando el DNI no es valido
+     */
+    public static class DNIInvalidoException extends Exception {
+        public DNIInvalidoException(String mensaje) {
+            super(mensaje);
+        }
+    }
+
+    /**
+     * Excepcion para cuando el usuario ya existe
+     */
+    public static class UsuarioYaExisteException extends Exception {
+        public UsuarioYaExisteException(String mensaje) {
+            super(mensaje);
+        }
+    }
+
+    /**
+     * Excepcion para cuando hay campos vacios
+     */
+    public static class CamposVaciosException extends Exception {
+        public CamposVaciosException(String mensaje) {
+            super(mensaje);
+        }
+    }
+
+    /**
      * Metodo que muestra el menu de administrador
      * @param Clientes ArrayList de clientes
      * @param Vehiculos ArrayList de Vehiculos
