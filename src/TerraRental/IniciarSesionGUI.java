@@ -72,7 +72,7 @@ public class IniciarSesionGUI extends JFrame implements ActionListener {
                         usuario.Menu(Admin.getInstance().getClientes(), Admin.getInstance().getVehiculos());
                         dispose();
                     } else {
-                        JOptionPane.showMessageDialog(this, "Contraseña incorrecta. Pista: " + usuario.getPistaPassword(), "Error de Inicio de Sesión", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Contraseña incorrecta.", "Error de Inicio de Sesión", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
                     JOptionPane.showMessageDialog(this, "DNI o contraseña incorrectos.", "Error de Inicio de Sesión", JOptionPane.ERROR_MESSAGE);

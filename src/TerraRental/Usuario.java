@@ -9,7 +9,7 @@ public abstract class Usuario {
     private String DNI;
     private String nombre;
     private String password;
-    private String pistaPassword;
+
     /**
      * Constructor de la clase Usuario
      * @param DNI DNI del usuario
@@ -21,11 +21,8 @@ public abstract class Usuario {
         this.DNI = DNI;
         this.nombre = nombre;
         this.password = password;
-        this.pistaPassword = pistaPassword;
+
     }
-
-
-
     /**
      * Metodo getDNI
      * @return devuelve el DNI del usuario
@@ -74,22 +71,6 @@ public abstract class Usuario {
         return password;
     }
 
-
-    /**
-     * Metodo getPistaPassword
-     * @return devuelve la pista de la contraseña del usuario
-     */
-    public String getPistaPassword() {
-        return pistaPassword;
-    }
-
-    /**
-     * Metodo setPistaPassword
-     * @param pistaPassword Pista de la contraseña del usuario
-     */
-    public void setPistaPassword(String pistaPassword) {
-        this.pistaPassword = pistaPassword;
-    }
 
     /**
      * Metodo ComprobarPassword

@@ -156,7 +156,7 @@ public class Cliente extends Usuario implements Menus{
         fechaCad = fecha2.getDia() + "," + fecha2.getMes() + "," + fecha2.getAnyo();
 
         // Devuelve una cadena con el formato DNI,nombre,password,pistaPassword y con los vehiculos reservados preparados anteriormente
-        return getDNI() + "," + getNombre() + "," + getPistaPassword() + "," + getPistaPassword() + "," + fechaNac + "," + fechaCad + reservados;
+        return getDNI() + "," + getNombre() + "," +  getPassword() + "," + fechaNac + "," + fechaCad + reservados;
     }
 
     /**

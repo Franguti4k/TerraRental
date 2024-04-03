@@ -115,6 +115,12 @@ public class Admin extends Usuario implements Menus{
         }
     }
 
+    public static class ContraseñaNoCoincideException extends Exception {
+        public ContraseñaNoCoincideException (String mensaje) {
+            super(mensaje);
+        }
+    }
+
     /**
      * Excepcion para cuando el usuario ya existe
      */

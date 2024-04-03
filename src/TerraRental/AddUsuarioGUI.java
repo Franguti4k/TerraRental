@@ -12,7 +12,7 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
     private final JTextField txtDNI;
     private final JTextField txtNombre;
     private final JTextField txtPassword;
-    private final JTextField txtPistaPassword;
+    private final JTextField txtConfirmPassword;
     private final JTextField txtFechaNacDia;
     private final JTextField txtFechaNacMes;
     private final JTextField txtFechaNacAnyo;
@@ -53,9 +53,9 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
         txtPassword = new JTextField();
         panel.add(txtPassword);
 
-        panel.add(new JLabel("Pista Contraseña:"));
-        txtPistaPassword = new JTextField();
-        panel.add(txtPistaPassword);
+        panel.add(new JLabel("Confirmar Contraseña:"));
+        txtConfirmPassword = new JTextField();
+        panel.add(txtConfirmPassword);
 
         panel.add(new JLabel("Dia de nacimiento:"));
         txtFechaNacDia = new JTextField();
@@ -106,7 +106,7 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
                 String DNI = txtDNI.getText();
                 String nombre = txtNombre.getText();
                 String password = txtPassword.getText();
-                String pistaPassword = txtPistaPassword.getText();
+                String confirmPassword = txtConfirmPassword.getText();
                 int diaNacimiento = Integer.parseInt(txtFechaNacDia.getText());
                 int mesNacimiento = Integer.parseInt(txtFechaNacMes.getText());
                 int anioNacimiento = Integer.parseInt(txtFechaNacAnyo.getText());
@@ -118,18 +118,22 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
                 Fecha fechacad = new Fecha(diaCadCarnet, mesCadCarnet, anioCadCarnet);
 
                 // Verificar que ningun campo este vacio
-                if (DNI.equals("") || nombre.equals("") || password.equals("") || pistaPassword.equals("")) {
+                if (DNI.equals("") || nombre.equals("") || password.equals("") || confirmPassword.equals("")) {
                     throw new Admin.CamposVaciosException("No puede haber campos vacios");
+                } else if (confirmPassword != password){
+                    throw new Admin.ContraseñaNoCoincideException ("Las contraseñas no coinciden.");
                 }
 
                 // Se crea el usuario y se guarda en el archivo de usuarios
-                Admin.getInstance().addUsuario(DNI, nombre, password, pistaPassword,fechaNac, fechacad, Usuarios);
+                Admin.getInstance().addUsuario(DNI, nombre, password, confirmPassword,fechaNac, fechacad, Usuarios);
                 GestorDeArchivos.guardarClientes(Usuarios);
                 JOptionPane.showMessageDialog(null, "Usuario creado con éxito");
                 dispose();
             } catch (Admin.CamposVaciosException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             } catch (Admin.DNIInvalidoException | Admin.UsuarioYaExisteException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            } catch (Admin.ContraseñaNoCoincideException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         } else if (e.getSource() == btnCancelar) {
