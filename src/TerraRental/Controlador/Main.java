@@ -1,6 +1,7 @@
-package TerraRental;
+package TerraRental.Vista;
 
-import java.util.ArrayList;
+import TerraRental.Controlador.Admin;
+import TerraRental.Vista.TerraRentalGUI;
 
 /**
  * @author Francisco Javier Gutierrez Gallego
