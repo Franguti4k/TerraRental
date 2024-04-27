@@ -1,4 +1,4 @@
-package TerraRental;
+package TerraRental.Modelo;
 /**
  * @author Francisco Javier Gutierrez Gallego
  * @author Gina Andrea Ramirez Guerrero

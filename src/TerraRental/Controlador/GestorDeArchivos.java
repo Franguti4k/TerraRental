@@ -1,4 +1,4 @@
-package TerraRental;
+package TerraRental.Controlador;
 
 import java.io.*;
 import java.text.ParseException;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class GestorDeArchivos {
     //Ruta de los archivos (pongo final para que no se puedan modificar)
     private  static final String ARCHIVO_CLIENTES = "Clientes.txt";
-    private static final  String ARCHIVO_VEHICULOS = "Vehiculos.txt";
+    private static final  String ARCHIVO_VEHICULOS = "Coches.txt";
 
     /**
      * Metodo guardarClientes que guarda los clientes en un archivo

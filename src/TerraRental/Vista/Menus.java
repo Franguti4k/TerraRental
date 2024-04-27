@@ -1,4 +1,7 @@
-package TerraRental;
+package TerraRental.Vista;
+
+import TerraRental.Controlador.Cliente;
+import TerraRental.Controlador.Vehiculo;
 
 import java.util.ArrayList;
 

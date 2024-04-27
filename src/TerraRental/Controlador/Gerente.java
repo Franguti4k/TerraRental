@@ -1,4 +1,4 @@
-package TerraRental;
+package TerraRental.Controlador;
 /**
  * @author Francisco Javier Gutierrez Gallego
  * @author Gina Andrea Ramirez Guerrero

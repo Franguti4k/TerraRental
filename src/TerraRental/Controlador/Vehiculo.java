@@ -1,4 +1,8 @@
-package TerraRental;
+package TerraRental.Controlador;
+
+import TerraRental.Modelo.Cambio;
+import TerraRental.Modelo.Categoria;
+import TerraRental.Modelo.Tipo;
 
 /**
  * @author Francisco Javier Gutierrez Gallego

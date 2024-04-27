@@ -1,4 +1,8 @@
-package TerraRental;
+package TerraRental.Controlador;
+
+
+import TerraRental.Vista.Menus;
+
 import java.util.ArrayList;
 /**
  * @author Francisco Javier Gutierrez Gallego
@@ -6,7 +10,7 @@ import java.util.ArrayList;
  * @author Pedro Zuñeda Diego
  * @author Santiago Valderrama Flores
  */
-public class Admin extends Usuario implements Menus{
+public class Admin extends Usuario implements Menus {
     private static  Admin instance;
     private ArrayList<Vehiculo> vehiculos;
     private ArrayList<Cliente> clientes;
@@ -106,6 +110,8 @@ public class Admin extends Usuario implements Menus{
         Usuarios.add(nuevoUsuario);
     }
 
+
+
     /**
      * Excepcion para cuando el DNI no es valido
      */
@@ -148,4 +154,5 @@ public class Admin extends Usuario implements Menus{
     public void Menu(ArrayList<Cliente> Clientes, ArrayList<Vehiculo> Vehiculos) {
 
     }
+
 }

@@ -1,4 +1,9 @@
-package TerraRental;
+package TerraRental.Vista;
+
+import TerraRental.Controlador.Admin;
+import TerraRental.Controlador.Cliente;
+import TerraRental.Controlador.Fecha;
+import TerraRental.Controlador.GestorDeArchivos;
 
 import javax.swing.*;
 import java.awt.*;

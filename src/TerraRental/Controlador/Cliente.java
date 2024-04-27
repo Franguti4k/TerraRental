@@ -1,4 +1,6 @@
-package TerraRental;
+package TerraRental.Controlador;
+
+import TerraRental.Vista.Menus;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
  * @author Pedro Zuñeda Diego
  * @author Santiago Valderrama Flores
  */
-public class Cliente extends Usuario implements Menus{
+public class Cliente extends Usuario implements Menus {
 
 
     private Fecha fecha_Nacimiento;

@@ -1,4 +1,4 @@
-package TerraRental;
+package TerraRental.Modelo;
 
 /**
  * Enumerado de Tipo

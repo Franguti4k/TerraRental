@@ -1,4 +1,4 @@
-package TerraRental;
+package TerraRental.Controlador;
 
 public class Fecha {
     private int dia;
