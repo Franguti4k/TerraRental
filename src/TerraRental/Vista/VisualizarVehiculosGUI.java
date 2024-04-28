@@ -25,26 +25,49 @@ public class VisualizarVehiculosGUI extends JFrame {
         model.addColumn("Marca");
         model.addColumn("Modelo");
         model.addColumn("Categoría");
-        model.addColumn("Reserva");
+        model.addColumn("Cambio");
+        model.addColumn("Tipo");
+        model.addColumn("Matricula");
+        model.addColumn("Precio");
 
         // Agregar más columnas según sea necesario
 
         // Llenar la tabla con los datos de los vehículos
         for (Vehiculo vehiculo : vehiculos) {
-            model.addRow(new Object[]{vehiculo.getMarca(), vehiculo.getModelo(), vehiculo.getCategoria()});
+            model.addRow(new Object[]{vehiculo.getMarca(), vehiculo.getModelo(), vehiculo.getCategoria(),vehiculo.getCambio(), vehiculo.getTipo(), vehiculo.getMatricula(), vehiculo.getPrecio() + "€"});
         }
 
         // Crear una tabla con el modelo de tabla
         JTable table = new JTable(model);
 
-        // Crear una columna de botones para la reserva
-        TableColumn reservarColumn = table.getColumnModel().getColumn(3);
-        reservarColumn.setCellRenderer(new ButtonRenderer());
-        reservarColumn.setCellEditor(new ButtonEditor(new JCheckBox()));
+
 
         // Agregar la tabla a un panel con desplazamiento para que se pueda desplazar si hay muchos vehículos
         JScrollPane scrollPane = new JScrollPane(table);
         getContentPane().add(scrollPane, BorderLayout.CENTER);
+
+        // Crear un panel para el cuadro de texto y el botón
+        JPanel panel = new JPanel();
+        JTextField textField = new JTextField(20); // Cuadro de texto
+        JLabel label = new JLabel("Introduce matrícula: "); // Texto al lado del cuadro de texto
+        JButton button = new JButton("Reservar"); // Botón
+        panel.add(label);
+        panel.add(textField);
+        panel.add(button);
+
+        // Manejar el evento del botón
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Aquí puedes implementar la lógica para reservar el vehículo
+                String texto = textField.getText();
+                // Ejemplo: Mostrar un mensaje con el texto del cuadro de texto
+                JOptionPane.showMessageDialog(null, "Texto ingresado: " + texto);
+            }
+        });
+
+        getContentPane().add(panel, BorderLayout.SOUTH); // Agregar el panel al sur del BorderLayout
+
 
         setLocationRelativeTo(null);
         setVisible(true);
