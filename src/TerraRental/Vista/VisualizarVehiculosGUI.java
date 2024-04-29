@@ -1,3 +1,9 @@
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Pedro Zuñeda Diego
+ * @author Santiago Valderrama Flores
+ */
 package TerraRental.Vista;
 
 import TerraRental.Controlador.Admin;
