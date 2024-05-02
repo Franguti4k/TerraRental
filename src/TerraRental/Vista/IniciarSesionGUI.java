@@ -15,6 +15,8 @@ public class IniciarSesionGUI extends JFrame implements ActionListener {
     private final JPasswordField txtPassword;
     private final JButton btnIniciarSesion;
     private final JButton btnCancelar;
+    private final JButton btnRecuperarPassword;
+
 
     /**
      * Constructor de la clase IniciarSesionGUI que muestra la interfaz gráfica para iniciar sesión
@@ -22,11 +24,13 @@ public class IniciarSesionGUI extends JFrame implements ActionListener {
     public IniciarSesionGUI() {
         // Configuración del JFrame
         setTitle("Iniciar Sesión");
-        setSize(320, 200);
+        setSize(420, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Crear y configurar JPanel con GridLayout
-        JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
+        JPanel panel = new JPanel(new GridLayout(2, 2, 10, 10));
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
 
 
         // Añadiendo componentes al panel
@@ -41,12 +45,15 @@ public class IniciarSesionGUI extends JFrame implements ActionListener {
         // Botones
         btnIniciarSesion = new JButton("Iniciar Sesión");
         btnCancelar = new JButton("Cancelar");
+        btnRecuperarPassword = new JButton("Recuperar Contraseña");
 
         panel.add(btnIniciarSesion);
         panel.add(btnCancelar);
+        panel.add(btnRecuperarPassword);
 
         btnIniciarSesion.addActionListener(this);
         btnCancelar.addActionListener(this);
+        btnRecuperarPassword.addActionListener(this);
 
         add(panel);
         setVisible(true);
@@ -83,6 +90,11 @@ public class IniciarSesionGUI extends JFrame implements ActionListener {
             }
         } else if (e.getSource() == btnCancelar) {
             dispose(); // Cierra la ventana al hacer clic en Cancelar
+        }
+        else if (e.getSource() == btnRecuperarPassword) {
+            RestablecerContrasenaGUI ventanaRestablecer = new RestablecerContrasenaGUI(Admin.getInstance().getClientes());
+            ventanaRestablecer.pack();
+            ventanaRestablecer.setVisible(true);
         }
     }
 }

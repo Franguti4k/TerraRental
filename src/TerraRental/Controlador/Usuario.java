@@ -48,6 +48,13 @@ public abstract class Usuario {
     }
 
     /**
+     * Metodo para recuperar la contraseña en caso de que el usuario la haya olvidado
+     * @param DNI
+     * @param nuevaContraseña
+     */
+
+
+    /**
      * Metodo getNombre
      * @return devuelve el nombre del usuario
      */
@@ -99,3 +106,5 @@ public abstract class Usuario {
         return Character.isLetter(letra); // Devuelve true si el último carácter es una letra.
     }
 }
+
+
