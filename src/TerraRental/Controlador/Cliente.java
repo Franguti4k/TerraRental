@@ -123,18 +123,6 @@ public class Cliente extends Usuario implements Menus {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Metodo Metodo toArchivoString que devuelve un string con los datos del cliente
      * @return Devuelve un string con los datos del cliente
@@ -189,7 +177,7 @@ public class Cliente extends Usuario implements Menus {
     }
 
     @Override
-    public void Menu(ArrayList<Cliente> Clientes, ArrayList<Vehiculo> Vehiculos) {
+    public void Menu(ArrayList<Cliente> Clientes, ArrayList<Vehiculo> Vehiculos,ArrayList<Gerente> Gerentes) {
 
     }
 

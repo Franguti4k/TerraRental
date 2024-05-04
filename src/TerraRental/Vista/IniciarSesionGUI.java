@@ -72,14 +72,14 @@ public class IniciarSesionGUI extends JFrame implements ActionListener {
             // Lógica para verificar el inicio de sesión
             if (Admin.getInstance().ComprobarPassword(passwordIngresado)) {
                 // Inicio de sesión como administrador
-                Admin.getInstance().Menu(Admin.getInstance().getClientes(), Admin.getInstance().getVehiculos());
+                Admin.getInstance().Menu(Admin.getInstance().getClientes(), Admin.getInstance().getVehiculos(), Admin.getInstance().getGerentes());
                 dispose();
             } else {
                 Cliente usuario = Cliente.buscarUsuarioPorDNI(dniIngresado, Admin.getInstance().getClientes());
                 if (usuario != null) {
                     if (usuario.ComprobarPassword(passwordIngresado)) {
                         // Inicio de sesión como usuario de la biblioteca
-                        usuario.Menu(Admin.getInstance().getClientes(), Admin.getInstance().getVehiculos());
+                        usuario.Menu(Admin.getInstance().getClientes(), Admin.getInstance().getVehiculos(),Admin.getInstance().getGerentes());
                         dispose();
                     } else {
                         JOptionPane.showMessageDialog(this, "Contraseña incorrecta.", "Error de Inicio de Sesión", JOptionPane.ERROR_MESSAGE);

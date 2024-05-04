@@ -14,6 +14,7 @@ public class Admin extends Usuario implements Menus {
     private static  Admin instance;
     private ArrayList<Vehiculo> vehiculos;
     private ArrayList<Cliente> clientes;
+    private ArrayList<Gerente> gerentes;
 
     /**
      * Constructor de Admin
@@ -73,6 +74,22 @@ public class Admin extends Usuario implements Menus {
      */
     public void setClientes(ArrayList<Cliente> clientes) {
         this.clientes = clientes;
+    }
+
+    /**
+     * get de gerentes
+     * @return devuelve la lista de gerentes
+     */
+    public ArrayList<Gerente> getGerentes() {
+        return gerentes;
+    }
+
+    /**
+     * set de gerentes
+     * @param gerentes ArrayList de clientes
+     */
+    public void setGerentes(ArrayList<Gerente> gerentes) {
+        this.gerentes = gerentes;
     }
 
     /**
@@ -149,9 +166,10 @@ public class Admin extends Usuario implements Menus {
      * Metodo que muestra el menu de administrador
      * @param Clientes ArrayList de clientes
      * @param Vehiculos ArrayList de Vehiculos
+     * @param Vehiculos ArrayList de Gerentes
      */
     @Override
-    public void Menu(ArrayList<Cliente> Clientes, ArrayList<Vehiculo> Vehiculos) {
+    public void Menu(ArrayList<Cliente> Clientes, ArrayList<Vehiculo> Vehiculos, ArrayList<Gerente> Gerentes) {
 
     }
 

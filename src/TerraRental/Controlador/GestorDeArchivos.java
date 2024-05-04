@@ -9,6 +9,7 @@ public class GestorDeArchivos {
     //Ruta de los archivos (pongo final para que no se puedan modificar)
     private  static final String ARCHIVO_CLIENTES = "Clientes.txt";
     private static final  String ARCHIVO_VEHICULOS = "Coches.txt";
+    private static final String ARCHIVO_GERENTES = "Gerentes.txt";
 
     /**
      * Metodo guardarClientes que guarda los clientes en un archivo
@@ -74,6 +75,41 @@ public class GestorDeArchivos {
             e.printStackTrace();
         }
         return vehiculos;
+    }
+
+    /**
+     * Metodo guardarGerentes que guarda los gerentes en un archivo
+     * @param gerentes ArrayList de gerentes
+     */
+    public static void guardarGerentes(ArrayList<Gerente> gerentes){
+        try (PrintWriter out = new PrintWriter((new FileWriter(ARCHIVO_GERENTES)))) {
+            for (Gerente gerente : gerentes){
+                out.println(gerente.toArchivoString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Metodo que cargarGerentes que carga los Gerentes de un archivo
+     * @return devuelve un ArrayList de gerentes
+     */
+    public static ArrayList<Gerente> CargarGerentes() {
+        //creamos un ArrayList de Gerentes
+        ArrayList<Gerente> gerentes = new ArrayList<>();
+        try (Scanner scanner = new Scanner(new File(ARCHIVO_GERENTES))){
+            //Mientras haya siguiente linea lo añadimos al ArrayList
+            while (scanner.hasNextLine()) {
+                String linea = scanner.nextLine();
+                gerentes.add(Gerente.fromString(linea));
+            }
+        }catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return gerentes;
     }
 }
 
