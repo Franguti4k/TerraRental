@@ -5,7 +5,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GestorDeArchivos {
+public class  GestorDeArchivos {
     //Ruta de los archivos (pongo final para que no se puedan modificar)
     private  static final String ARCHIVO_CLIENTES = "Clientes.txt";
     private static final  String ARCHIVO_VEHICULOS = "Coches.txt";

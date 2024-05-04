@@ -92,6 +92,7 @@ public class IniciarSesionGUI extends JFrame implements ActionListener {
             dispose(); // Cierra la ventana al hacer clic en Cancelar
         }
         else if (e.getSource() == btnRecuperarPassword) {
+
             RestablecerContrasenaGUI ventanaRestablecer = new RestablecerContrasenaGUI(Admin.getInstance().getClientes());
             ventanaRestablecer.pack();
             ventanaRestablecer.setVisible(true);

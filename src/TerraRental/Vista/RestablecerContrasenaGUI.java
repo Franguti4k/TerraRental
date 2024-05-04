@@ -54,6 +54,7 @@ public class RestablecerContrasenaGUI extends JFrame {
                 try {
                     cliente.cambiarPassword(cliente.getPassword(), contrasena);
                     JOptionPane.showMessageDialog(null, "Contraseña cambiada correctamente.");
+                    dispose();
                 } catch (Cliente.PasswordIncorrectaException ex) {
                     JOptionPane.showMessageDialog(null, "Error al cambiar la contraseña.");
                 }
