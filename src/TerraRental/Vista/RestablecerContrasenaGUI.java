@@ -57,6 +57,7 @@ public class RestablecerContrasenaGUI extends JFrame {
                     dispose();
                 } catch (Cliente.PasswordIncorrectaException ex) {
                     JOptionPane.showMessageDialog(null, "Error al cambiar la contraseña.");
+                    dispose();
                 }
             }
         });
