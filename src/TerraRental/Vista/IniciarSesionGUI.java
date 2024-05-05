@@ -78,7 +78,7 @@ public class IniciarSesionGUI extends JFrame implements ActionListener {
                 Cliente usuario = Cliente.buscarUsuarioPorDNI(dniIngresado, Admin.getInstance().getClientes());
                 if (usuario != null) {
                     if (usuario.ComprobarPassword(passwordIngresado)) {
-                        // Inicio de sesión como usuario de la biblioteca
+                        // Inicio de sesión como cliente de la aplicacion
                         usuario.Menu(Admin.getInstance().getClientes(), Admin.getInstance().getVehiculos(),Admin.getInstance().getGerentes());
                         dispose();
                     } else {
