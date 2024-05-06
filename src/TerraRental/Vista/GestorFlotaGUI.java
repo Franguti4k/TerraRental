@@ -28,21 +28,60 @@ public class GestorFlotaGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Categoria categoria = Categoria.valueOf(JOptionPane.showInputDialog("Introduce la categoría del vehículo"));
-                    String marca = JOptionPane.showInputDialog("Introduce la marca del vehículo");
-                    String modelo = JOptionPane.showInputDialog("Introduce el modelo del vehículo");
-                    int precio = Integer.parseInt(JOptionPane.showInputDialog("Introduce el precio del vehículo"));
-                    Tipo tipo = Tipo.valueOf(JOptionPane.showInputDialog("Introduce el tipo del vehículo"));
-                    Cambio cambio = Cambio.valueOf(JOptionPane.showInputDialog("Introduce el cambio del vehículo"));
-                    int litros = Integer.parseInt(JOptionPane.showInputDialog("Introduce los litros del vehículo"));
-                    int caballos = Integer.parseInt(JOptionPane.showInputDialog("Introduce los caballos del vehículo"));
-                    String color = JOptionPane.showInputDialog("Introduce el color del vehículo");
-                    double kilometraje = Double.parseDouble(JOptionPane.showInputDialog("Introduce el kilometraje del vehículo"));
-                    String matricula = JOptionPane.showInputDialog("Introduce la matrícula del vehículo");
+                    JTextField categoriaField = new JTextField();
+                    JTextField marcaField = new JTextField();
+                    JTextField modeloField = new JTextField();
+                    JTextField precioField = new JTextField();
+                    JTextField tipoField = new JTextField();
+                    JTextField cambioField = new JTextField();
+                    JTextField litrosField = new JTextField();
+                    JTextField caballosField = new JTextField();
+                    JTextField colorField = new JTextField();
+                    JTextField kilometrajeField = new JTextField();
+                    JTextField matriculaField = new JTextField();
 
-                    Vehiculo nuevoVehiculo = new Vehiculo(categoria, marca, modelo, precio, tipo, cambio, litros, caballos, color, kilometraje, matricula);
-                    gerente.agregarVehiculo(nuevoVehiculo);
-                    JOptionPane.showMessageDialog(null, "Vehículo añadido", "Añadir vehículo", JOptionPane.INFORMATION_MESSAGE);
+                    JPanel panel = new JPanel(new GridLayout(11, 2));
+                    panel.add(new JLabel("Categoría del vehículo:"));
+                    panel.add(categoriaField);
+                    panel.add(new JLabel("Marca del vehículo:"));
+                    panel.add(marcaField);
+                    panel.add(new JLabel("Modelo del vehículo:"));
+                    panel.add(modeloField);
+                    panel.add(new JLabel("Precio del vehículo:"));
+                    panel.add(precioField);
+                    panel.add(new JLabel("Tipo del vehículo:"));
+                    panel.add(tipoField);
+                    panel.add(new JLabel("Cambio del vehículo:"));
+                    panel.add(cambioField);
+                    panel.add(new JLabel("Litros del vehículo:"));
+                    panel.add(litrosField);
+                    panel.add(new JLabel("Caballos del vehículo:"));
+                    panel.add(caballosField);
+                    panel.add(new JLabel("Color del vehículo:"));
+                    panel.add(colorField);
+                    panel.add(new JLabel("Kilometraje del vehículo:"));
+                    panel.add(kilometrajeField);
+                    panel.add(new JLabel("Matrícula del vehículo:"));
+                    panel.add(matriculaField);
+
+                    int result = JOptionPane.showConfirmDialog(null, panel, "Añadir vehículo", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+                    if (result == JOptionPane.OK_OPTION) {
+                        Categoria categoria = Categoria.valueOf(categoriaField.getText());
+                        String marca = marcaField.getText();
+                        String modelo = modeloField.getText();
+                        int precio = Integer.parseInt(precioField.getText());
+                        Tipo tipo = Tipo.valueOf(tipoField.getText());
+                        Cambio cambio = Cambio.valueOf(cambioField.getText());
+                        int litros = Integer.parseInt(litrosField.getText());
+                        int caballos = Integer.parseInt(caballosField.getText());
+                        String color = colorField.getText();
+                        double kilometraje = Double.parseDouble(kilometrajeField.getText());
+                        String matricula = matriculaField.getText();
+
+                        Vehiculo nuevoVehiculo = new Vehiculo(categoria, marca, modelo, precio, tipo, cambio, litros, caballos, color, kilometraje, matricula);
+                        gerente.agregarVehiculo(nuevoVehiculo);
+                        JOptionPane.showMessageDialog(null, "Vehículo añadido", "Añadir vehículo", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "ERROR\n" + ex.getMessage(), "Añadir vehículo", JOptionPane.ERROR_MESSAGE);
                 }
