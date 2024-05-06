@@ -13,8 +13,6 @@ import java.util.ArrayList;
  */
 public class Gerente extends Usuario implements Menus {
 
-    private ArrayList<Vehiculo> flota;
-
     /**
      * Constructor
      *
@@ -25,7 +23,6 @@ public class Gerente extends Usuario implements Menus {
      */
     public Gerente(String dni, String nombre, String password, String pistaPassword) {
         super(dni, nombre, password, pistaPassword);
-        this.flota= new ArrayList<>();
     }
 
 
@@ -60,12 +57,12 @@ public class Gerente extends Usuario implements Menus {
 
     // Método para añadir un vehículo a la flota
     public void agregarVehiculo(Vehiculo vehiculo) {
-        this.flota.add(vehiculo);
+        Admin.getInstance().getVehiculos().add(vehiculo);
     }
 
     // Método para retirar un vehículo de la flota
     public void retirarVehiculo(Vehiculo vehiculo) {
-        this.flota.remove(vehiculo);
+        Admin.getInstance().getVehiculos().remove(vehiculo);
     }
 
     @Override

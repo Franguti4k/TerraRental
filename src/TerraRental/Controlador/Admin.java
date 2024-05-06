@@ -99,6 +99,7 @@ public class Admin extends Usuario implements Menus {
     public void inicializarSistema(){
         setClientes(GestorDeArchivos.CargarClientes());
         setVehiculos(GestorDeArchivos.cargarVehiculos());
+        setGerentes(GestorDeArchivos.CargarGerentes());
     }
 
     /**
