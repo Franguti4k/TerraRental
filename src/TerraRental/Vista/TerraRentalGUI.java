@@ -24,14 +24,14 @@ public class TerraRentalGUI extends JFrame implements ActionListener {
         // Configuración del JFrame
         setTitle("Menú Principal");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 500);
+        setSize(900, 750);
 
         // Creando y configurando un JPanel con BoxLayout
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
         // Cargar y añadir la imagen
-        ImageIcon imageIcon = new ImageIcon("TerraRental_Logo.jpg");
+        ImageIcon imageIcon = new ImageIcon("TerraRental_Logo_small.jpg");
         JLabel imageLabel = new JLabel(imageIcon);
         imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(imageLabel);
