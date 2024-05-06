@@ -91,6 +91,8 @@ public class GestorFlotaGUI extends JFrame {
         // Agregar el panel al contenido de la ventana
         getContentPane().add(panelBotones, BorderLayout.CENTER);
 
+        pack();
+        setLocationRelativeTo(null);
         setVisible(true); // Hacer visible la ventana
     }
 
