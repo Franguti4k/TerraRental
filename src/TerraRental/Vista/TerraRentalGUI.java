@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class TerraRentalGUI extends JFrame implements ActionListener {
     private final JButton btnIniciarSesion;
     private final JButton btnCrearUsuario;
-    private final JButton btnVisualizarVehiculos;
     private final JButton btnCerrar;
 
     /**
@@ -36,12 +35,9 @@ public class TerraRentalGUI extends JFrame implements ActionListener {
         imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(imageLabel);
 
-        // Crear botón "Visualizar Vehículos"
-        btnVisualizarVehiculos = new JButton("Visualizar Vehículos");
+
         Dimension buttonSize = null;
-        btnVisualizarVehiculos.setPreferredSize(buttonSize);
-        btnVisualizarVehiculos.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnVisualizarVehiculos.addActionListener(this);
+
 
 
 
@@ -64,7 +60,6 @@ public class TerraRentalGUI extends JFrame implements ActionListener {
         // Añadiendo botones al panel
         panel.add(btnIniciarSesion);
         panel.add(btnCrearUsuario);
-        panel.add(btnVisualizarVehiculos);
         panel.add(btnCerrar);
 
         // Añadiendo el panel al JFrame
@@ -83,13 +78,7 @@ public class TerraRentalGUI extends JFrame implements ActionListener {
         } else if (e.getSource() == btnCrearUsuario) {
             new AddUsuarioGUI(TerraRental.getInstance().getClientes()); // Si se presiona el botón de crear usuario, se muestra la interfaz gráfica para crear un usuario
         }
-            // Manejar el evento del botón "Visualizar Vehículos"
-            else if (e.getSource() == btnVisualizarVehiculos) {
-                // Obtener la lista de vehículos disponibles
-                ArrayList<Vehiculo> vehiculos = TerraRental.getInstance().getVehiculos();
-                // Crear y mostrar la ventana para visualizar vehículos
-                new VisualizarVehiculosGUI(vehiculos);
-            }
+
          else if (e.getSource() == btnCerrar) {
             System.exit(0);
         }
