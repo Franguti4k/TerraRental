@@ -4,6 +4,8 @@ import TerraRental.Modelo.Cambio;
 import TerraRental.Modelo.Categoria;
 import TerraRental.Modelo.Tipo;
 
+import java.util.ArrayList;
+
 /**
  * @author Francisco Javier Gutierrez Gallego
  * @author Gina Andrea Ramirez Guerrero
@@ -211,6 +213,20 @@ public class Vehiculo {
      * @param matricula recibe la matricula
      */
     public void setMatricula(String matricula) { this.matricula = matricula; }
+
+    /**
+     * Busca un vehículo por matrícula.
+     * @param matricula la matrícula a buscar
+     * @return el vehículo correspondiente a la matrícula, o null si no se encuentra
+     */
+    public static Vehiculo buscarPorMatricula(String matricula, ArrayList<Vehiculo> vehiculos) {
+        for (Vehiculo vehiculo : vehiculos) {
+            if (vehiculo.getMatricula().equals(matricula)) {
+                return vehiculo;
+            }
+        }
+        return null; // Si no se encuentra la matrícula
+    }
 
     /**
      * Metodo toString que devuelve una cadena con los atributos del libro

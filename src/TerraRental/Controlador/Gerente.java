@@ -16,13 +16,25 @@ public class Gerente extends Usuario implements Menus {
     /**
      * Constructor
      *
-     * @param dni           DNI del usuario
-     * @param nombre        Nombre del usuario
-     * @param password      Contraseña del usuario
-     * @param pistaPassword Pista de la contraseña del usuario
+     * @param dni           DNI del gerente
+     * @param nombre        Nombre del gerente
+     * @param password      Contraseña del gerente
+     * @param pistaPassword Pista de la contraseña del gerente
      */
     public Gerente(String dni, String nombre, String password, String pistaPassword) {
         super(dni, nombre, password);
+    }
+
+    public static Gerente buscarGerentePorDNI(String DNI, ArrayList<Gerente> Gerentes) {
+        if (Gerentes == null) {
+            return null;
+        }
+        for (Gerente gerente: Gerentes) {
+            if (gerente.getDNI().equals(DNI)) {
+                return gerente;
+            }
+        }
+        return null;
     }
 
 
@@ -33,7 +45,7 @@ public class Gerente extends Usuario implements Menus {
     public String toArchivoString() {
 
 
-        // Devuelve una cadena con el formato DNI,nombre,password,pistaPassword y con los vehiculos reservados preparados anteriormente
+        // Devuelve una cadena con el formato DNI,nombre,password,pistaPassword
         return getDNI() + "," + getNombre() + "," +  getPassword();
     }
 

@@ -2,6 +2,7 @@ package TerraRental.Vista;
 
 import TerraRental.Controlador.TerraRental;
 import TerraRental.Controlador.Cliente;
+import TerraRental.Controlador.Gerente;
 
 import javax.swing.*;
 import java.awt.*;
@@ -80,6 +81,16 @@ public class IniciarSesionGUI extends JFrame implements ActionListener {
                     if (usuario.ComprobarPassword(passwordIngresado)) {
                         // Inicio de sesión como cliente de la aplicacion
                         usuario.Menu(TerraRental.getInstance().getClientes(), TerraRental.getInstance().getVehiculos(), TerraRental.getInstance().getGerentes());
+                        dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Contraseña incorrecta.", "Error de Inicio de Sesión", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+                else if (Gerente.buscarGerentePorDNI(dniIngresado, TerraRental.getInstance().getGerentes()) != null) {
+                    Gerente gerente = Gerente.buscarGerentePorDNI(dniIngresado, TerraRental.getInstance().getGerentes());
+                    if (gerente.ComprobarPassword(passwordIngresado)) {
+                        // Inicio de sesión como gerente
+                        gerente.Menu(TerraRental.getInstance().getClientes(), TerraRental.getInstance().getVehiculos(), TerraRental.getInstance().getGerentes());
                         dispose();
                     } else {
                         JOptionPane.showMessageDialog(this, "Contraseña incorrecta.", "Error de Inicio de Sesión", JOptionPane.ERROR_MESSAGE);
