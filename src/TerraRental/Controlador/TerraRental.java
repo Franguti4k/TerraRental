@@ -22,7 +22,7 @@ public class TerraRental extends Usuario implements Menus {
      * @param password contraseña de admin
      */
     public TerraRental(String DNI, String password) {
-        super(DNI,"", password, "");
+        super(DNI,"", password);
     }
 
     /**
@@ -124,7 +124,7 @@ public class TerraRental extends Usuario implements Menus {
             }
         }
         // Crear un nuevo usuario y agregarlo a la lista
-        Cliente nuevoUsuario = new Cliente(DNI, nombre, password, pistaPassword, fechaNac, fechaCad, null);
+        Cliente nuevoUsuario = new Cliente(DNI, nombre, password, fechaNac, fechaCad, null);
         Usuarios.add(nuevoUsuario);
     }
 

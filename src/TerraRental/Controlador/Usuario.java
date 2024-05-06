@@ -15,9 +15,8 @@ public abstract class Usuario {
      * @param DNI DNI del usuario
      * @param nombre Nombre del usuario
      * @param password Contraseña del usuario
-     * @param pistaPassword Pista de la contraseña del usuario
      */
-    public Usuario(String DNI, String nombre, String password, String pistaPassword) {
+    public Usuario(String DNI, String nombre, String password) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.password = password;

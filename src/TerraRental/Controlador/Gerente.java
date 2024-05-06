@@ -22,7 +22,7 @@ public class Gerente extends Usuario implements Menus {
      * @param pistaPassword Pista de la contraseña del usuario
      */
     public Gerente(String dni, String nombre, String password, String pistaPassword) {
-        super(dni, nombre, password, pistaPassword);
+        super(dni, nombre, password);
     }
 
 

@@ -23,7 +23,7 @@ public class TerraRentalGUI extends JFrame implements ActionListener {
         // Configuración del JFrame
         setTitle("Menú Principal");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(900, 750);
+        setSize(1000, 800);
 
         // Creando y configurando un JPanel con BoxLayout
         JPanel panel = new JPanel();

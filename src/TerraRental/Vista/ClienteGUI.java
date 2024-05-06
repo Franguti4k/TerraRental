@@ -18,7 +18,7 @@ public class ClienteGUI extends JFrame implements ActionListener {
         // Titulo y tamaño de la ventana
         setTitle("Menú Cliente");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(210, 250);
+        setSize(600, 400);
 
         // Creación del panel
         JPanel panel = new JPanel();

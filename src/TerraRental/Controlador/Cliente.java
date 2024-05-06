@@ -26,13 +26,12 @@ public class Cliente extends Usuario implements Menus {
      * @param DNI DNI del cliente
      * @param nombre Nombre del cliente
      * @param password contraseña del cliente
-     * @param pistaPassword Pista de la contraseña del cliente
      * @param fecha_Nacimiento fecha de nacimiento
      * @param cadCarnet fecha de caducidad del carnet de conducir
      * @param vehiculoAlquilado vehiculo alquilado por el cliente
      */
-    public Cliente(String DNI, String nombre, String password, String pistaPassword, Fecha fecha_Nacimiento, Fecha cadCarnet, Vehiculo vehiculoAlquilado) {
-        super(DNI, nombre, password, pistaPassword);
+    public Cliente(String DNI, String nombre, String password, Fecha fecha_Nacimiento, Fecha cadCarnet, Vehiculo vehiculoAlquilado) {
+        super(DNI, nombre, password);
         this.fecha_Nacimiento = fecha_Nacimiento;
         this.cadCarnet = cadCarnet;
         this.vehiculoAlquilado = vehiculoAlquilado;
@@ -163,18 +162,17 @@ public class Cliente extends Usuario implements Menus {
         String DNI = partes[0];
         String nombre = partes[1];
         String password = partes[2];
-        String pistaPassword = partes[3];
-        int diaNacimiento = Integer.parseInt(partes[4]);
-        int mesNacimiento = Integer.parseInt(partes[5]);
-        int anioNacimiento = Integer.parseInt(partes[6]);
-        int diaCadCarnet = Integer.parseInt(partes[7]);
-        int mesCadCarnet = Integer.parseInt(partes[8]);
-        int anioCadCarnet = Integer.parseInt(partes[9]);
+        int diaNacimiento = Integer.parseInt(partes[3]);
+        int mesNacimiento = Integer.parseInt(partes[4]);
+        int anioNacimiento = Integer.parseInt(partes[5]);
+        int diaCadCarnet = Integer.parseInt(partes[6]);
+        int mesCadCarnet = Integer.parseInt(partes[7]);
+        int anioCadCarnet = Integer.parseInt(partes[8]);
 
         Fecha fechaNacimiento = new Fecha(diaNacimiento, mesNacimiento, anioNacimiento);
         Fecha fechaCadCarnet = new Fecha(diaCadCarnet, mesCadCarnet, anioCadCarnet);
 
-        return new Cliente(DNI, nombre, password, pistaPassword, fechaNacimiento, fechaCadCarnet, null);
+        return new Cliente(DNI, nombre, password, fechaNacimiento, fechaCadCarnet, null);
     }
 
     @Override
