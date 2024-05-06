@@ -71,11 +71,13 @@ public class Gerente extends Usuario implements Menus {
     // Método para añadir un vehículo a la flota
     public void agregarVehiculo(Vehiculo vehiculo) {
         TerraRental.getInstance().getVehiculos().add(vehiculo);
+        GestorDeArchivos.guardarVehiculos(TerraRental.getInstance().getVehiculos());
     }
 
     // Método para retirar un vehículo de la flota
     public void retirarVehiculo(Vehiculo vehiculo) {
         TerraRental.getInstance().getVehiculos().remove(vehiculo);
+        GestorDeArchivos.guardarVehiculos(TerraRental.getInstance().getVehiculos());
     }
 
     @Override
