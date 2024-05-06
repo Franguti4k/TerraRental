@@ -92,6 +92,9 @@ public class SelectDateUI extends JFrame implements ActionListener {
         btnCancel = new JButton("Cancelar");
         mainPanel.add(btnCancel, constraints);
 
+        btnCancel.addActionListener(this);
+        btnAccept.addActionListener(this);
+
         getContentPane().add(mainPanel);
         pack();
     }
