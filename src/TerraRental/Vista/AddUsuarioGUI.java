@@ -42,7 +42,7 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
         setSize(350, 280);
 
         // Crear y configurar JPanel con GridLayout
-        JPanel panel = new JPanel(new GridLayout(5, 2, 10, 10));
+        JPanel panel = new JPanel(new GridLayout(11, 2, 10, 10));
 
 
         // Etiquetas y campos de texto
@@ -97,6 +97,7 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
         btnCancelar.addActionListener(this);
 
         add(panel);
+        pack();
         setVisible(true);
         setLocationRelativeTo(null);
     }
