@@ -2,8 +2,11 @@ package TerraRental.Vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import TerraRental.Controlador.Fecha;
 
-public class SelectDateUI extends JFrame {
+public class SelectDateUI extends JFrame implements ActionListener {
     private JTextField endDay, endMon, endYear, staDay, staMon, staYear;
     private JButton btnAccept, btnCancel;
 
@@ -59,24 +62,24 @@ public class SelectDateUI extends JFrame {
         mainPanel.add(new JLabel("Día: "), constraints);
 
         constraints.gridx = 1;
-        staDay = new JTextField(5);
-        mainPanel.add(staDay, constraints);
+        endDay = new JTextField(5);
+        mainPanel.add(endDay, constraints);
 
         constraints.gridx = 2;
 
         mainPanel.add(new JLabel("Mes: "), constraints);
 
         constraints.gridx = 3;
-        staMon = new JTextField(5);
-        mainPanel.add(staMon, constraints);
+        endMon = new JTextField(5);
+        mainPanel.add(endMon, constraints);
 
         constraints.gridx = 4;
 
         mainPanel.add(new JLabel("Año: "), constraints);
 
         constraints.gridx = 5;
-        staYear = new JTextField(5);
-        mainPanel.add(staYear, constraints);
+        endYear = new JTextField(5);
+        mainPanel.add(endYear, constraints);
 
         constraints.gridx = 0;
         constraints.gridy = 4;
@@ -91,5 +94,22 @@ public class SelectDateUI extends JFrame {
 
         getContentPane().add(mainPanel);
         pack();
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnAccept) {
+
+            int iStaDay = Integer.parseInt(staDay.getText());
+            int iStaMon = Integer.parseInt(staMon.getText());
+            int iStaYear = Integer.parseInt(staYear.getText());
+            int iEndDay = Integer.parseInt(endDay.getText());
+            int iEndMon = Integer.parseInt(endMon.getText());
+            int iEndYear = Integer.parseInt(endYear.getText());
+
+            Fecha fSta = new Fecha(iStaDay, iStaMon, iStaYear);
+            Fecha fEnd = new Fecha(iEndDay, iEndMon, iEndYear);
+        } else if (e.getSource() == btnCancel) {
+            dispose();
+        }
     }
 }
