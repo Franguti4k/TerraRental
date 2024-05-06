@@ -16,7 +16,7 @@ public class ClienteGUI extends JFrame implements ActionListener {
     public ClienteGUI(Cliente usuario) {
         this.usuarioActual = usuario;
         // Titulo y tamaño de la ventana
-        setTitle("Menú Usuario");
+        setTitle("Menú Cliente");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(210, 250);
 
