@@ -1,5 +1,6 @@
 package TerraRental.Controlador;
 
+import TerraRental.Vista.ClienteGUI;
 import TerraRental.Vista.Menus;
 
 import java.text.ParseException;
@@ -178,7 +179,7 @@ public class Cliente extends Usuario implements Menus {
 
     @Override
     public void Menu(ArrayList<Cliente> Clientes, ArrayList<Vehiculo> Vehiculos,ArrayList<Gerente> Gerentes) {
-
+      new ClienteGUI(this);
     }
 
 
