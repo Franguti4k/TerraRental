@@ -1,6 +1,6 @@
 package TerraRental.Vista;
 
-import TerraRental.Controlador.Admin;
+import TerraRental.Controlador.TerraRental;
 import TerraRental.Controlador.Cliente;
 
 import javax.swing.*;
@@ -70,16 +70,16 @@ public class IniciarSesionGUI extends JFrame implements ActionListener {
             String passwordIngresado = new String(txtPassword.getPassword());
 
             // Lógica para verificar el inicio de sesión
-            if (Admin.getInstance().ComprobarPassword(passwordIngresado)) {
+            if (TerraRental.getInstance().ComprobarPassword(passwordIngresado)) {
                 // Inicio de sesión como administrador
-                Admin.getInstance().Menu(Admin.getInstance().getClientes(), Admin.getInstance().getVehiculos(), Admin.getInstance().getGerentes());
+                TerraRental.getInstance().Menu(TerraRental.getInstance().getClientes(), TerraRental.getInstance().getVehiculos(), TerraRental.getInstance().getGerentes());
                 dispose();
             } else {
-                Cliente usuario = Cliente.buscarUsuarioPorDNI(dniIngresado, Admin.getInstance().getClientes());
+                Cliente usuario = Cliente.buscarUsuarioPorDNI(dniIngresado, TerraRental.getInstance().getClientes());
                 if (usuario != null) {
                     if (usuario.ComprobarPassword(passwordIngresado)) {
                         // Inicio de sesión como cliente de la aplicacion
-                        usuario.Menu(Admin.getInstance().getClientes(), Admin.getInstance().getVehiculos(),Admin.getInstance().getGerentes());
+                        usuario.Menu(TerraRental.getInstance().getClientes(), TerraRental.getInstance().getVehiculos(), TerraRental.getInstance().getGerentes());
                         dispose();
                     } else {
                         JOptionPane.showMessageDialog(this, "Contraseña incorrecta.", "Error de Inicio de Sesión", JOptionPane.ERROR_MESSAGE);
@@ -93,7 +93,7 @@ public class IniciarSesionGUI extends JFrame implements ActionListener {
         }
         else if (e.getSource() == btnRecuperarPassword) {
 
-            RestablecerContrasenaGUI ventanaRestablecer = new RestablecerContrasenaGUI(Admin.getInstance().getClientes());
+            RestablecerContrasenaGUI ventanaRestablecer = new RestablecerContrasenaGUI(TerraRental.getInstance().getClientes());
             ventanaRestablecer.pack();
             ventanaRestablecer.setVisible(true);
         }

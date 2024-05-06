@@ -1,6 +1,6 @@
 package TerraRental.Vista;
 
-import TerraRental.Controlador.Admin;
+import TerraRental.Controlador.TerraRental;
 import TerraRental.Controlador.Cliente;
 import TerraRental.Controlador.Fecha;
 import TerraRental.Controlador.GestorDeArchivos;
@@ -125,21 +125,21 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
 
                 // Verificar que ningun campo este vacio
                 if (DNI.equals("") || nombre.equals("") || password.equals("") || confirmPassword.equals("")) {
-                    throw new Admin.CamposVaciosException("No puede haber campos vacios");
+                    throw new TerraRental.CamposVaciosException("No puede haber campos vacios");
                 } else if (confirmPassword != password){
-                    throw new Admin.ContraseñaNoCoincideException ("Las contraseñas no coinciden.");
+                    throw new TerraRental.ContraseñaNoCoincideException ("Las contraseñas no coinciden.");
                 }
 
                 // Se crea el usuario y se guarda en el archivo de usuarios
-                Admin.getInstance().addUsuario(DNI, nombre, password, confirmPassword,fechaNac, fechacad, Usuarios);
+                TerraRental.getInstance().addUsuario(DNI, nombre, password, confirmPassword,fechaNac, fechacad, Usuarios);
                 GestorDeArchivos.guardarClientes(Usuarios);
                 JOptionPane.showMessageDialog(null, "Usuario creado con éxito");
                 dispose();
-            } catch (Admin.CamposVaciosException ex) {
+            } catch (TerraRental.CamposVaciosException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-            } catch (Admin.DNIInvalidoException | Admin.UsuarioYaExisteException ex) {
+            } catch (TerraRental.DNIInvalidoException | TerraRental.UsuarioYaExisteException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
-            } catch (Admin.ContraseñaNoCoincideException ex) {
+            } catch (TerraRental.ContraseñaNoCoincideException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         } else if (e.getSource() == btnCancelar) {

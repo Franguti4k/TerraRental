@@ -10,18 +10,18 @@ import java.util.ArrayList;
  * @author Pedro Zuñeda Diego
  * @author Santiago Valderrama Flores
  */
-public class Admin extends Usuario implements Menus {
-    private static  Admin instance;
+public class TerraRental extends Usuario implements Menus {
+    private static TerraRental instance;
     private ArrayList<Vehiculo> vehiculos;
     private ArrayList<Cliente> clientes;
     private ArrayList<Gerente> gerentes;
 
     /**
-     * Constructor de Admin
+     * Constructor de TerraRental
      * @param DNI DNI de admin
      * @param password contraseña de admin
      */
-    public Admin(String DNI, String password) {
+    public TerraRental(String DNI, String password) {
         super(DNI,"", password, "");
     }
 
@@ -29,9 +29,9 @@ public class Admin extends Usuario implements Menus {
      * get de instancia
      * @return devuelve la instancia
      */
-    public static Admin getInstance() {
+    public static TerraRental getInstance() {
         if(instance == null){
-            instance = new Admin("admin ","adminpassword");
+            instance = new TerraRental("admin ","adminpassword");
         }
         return instance;
     }
@@ -40,8 +40,8 @@ public class Admin extends Usuario implements Menus {
      * set de instancia
      * @param instance recibe la instancia
      */
-    public static void setInstance(Admin instance) {
-        Admin.instance = instance;
+    public static void setInstance(TerraRental instance) {
+        TerraRental.instance = instance;
     }
 
     /**

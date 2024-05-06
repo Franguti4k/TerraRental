@@ -1,6 +1,6 @@
 package TerraRental.Vista;
 
-import TerraRental.Controlador.Admin;
+import TerraRental.Controlador.TerraRental;
 import TerraRental.Controlador.Cliente;
 
 import javax.swing.*;
@@ -71,11 +71,11 @@ public class ClienteGUI extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnReservarVehiculo) {
-            new VisualizarVehiculosGUI(Admin.getInstance().getVehiculos()); // Abre la ventana para reservar un vehiculo
+            new VisualizarVehiculosGUI(TerraRental.getInstance().getVehiculos()); // Abre la ventana para reservar un vehiculo
         }  /*else if (e.getSource() == btnDevolverVehiculo) {
-            new DevolverLibroGUI(usuarioActual, Admin.getInstance().getVehiculos()); // Abre la ventana para devolver un vehiculo
+            new DevolverLibroGUI(usuarioActual, TerraRental.getInstance().getVehiculos()); // Abre la ventana para devolver un vehiculo
         }*/ else if (e.getSource() == btnCambiarPassword) {
-            new RestablecerContrasenaGUI(Admin.getInstance().getClientes()); // Abre la ventana para cambiar la contraseña
+            new RestablecerContrasenaGUI(TerraRental.getInstance().getClientes()); // Abre la ventana para cambiar la contraseña
         } else if (e.getSource() == btnSalir) {
             dispose(); // Cierra la ventana
             new IniciarSesionGUI(); // Abre la interfaz de inicio de sesión

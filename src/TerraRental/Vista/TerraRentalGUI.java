@@ -1,6 +1,6 @@
 package TerraRental.Vista;
 
-import TerraRental.Controlador.Admin;
+import TerraRental.Controlador.TerraRental;
 import TerraRental.Controlador.Vehiculo;
 
 import javax.swing.*;
@@ -81,12 +81,12 @@ public class TerraRentalGUI extends JFrame implements ActionListener {
         if (e.getSource() == btnIniciarSesion) {
             new IniciarSesionGUI(); // Si se presiona el botón de iniciar sesión, se muestra la interfaz gráfica para iniciar sesión
         } else if (e.getSource() == btnCrearUsuario) {
-            new AddUsuarioGUI(Admin.getInstance().getClientes()); // Si se presiona el botón de crear usuario, se muestra la interfaz gráfica para crear un usuario
+            new AddUsuarioGUI(TerraRental.getInstance().getClientes()); // Si se presiona el botón de crear usuario, se muestra la interfaz gráfica para crear un usuario
         }
             // Manejar el evento del botón "Visualizar Vehículos"
             else if (e.getSource() == btnVisualizarVehiculos) {
                 // Obtener la lista de vehículos disponibles
-                ArrayList<Vehiculo> vehiculos = Admin.getInstance().getVehiculos();
+                ArrayList<Vehiculo> vehiculos = TerraRental.getInstance().getVehiculos();
                 // Crear y mostrar la ventana para visualizar vehículos
                 new VisualizarVehiculosGUI(vehiculos);
             }

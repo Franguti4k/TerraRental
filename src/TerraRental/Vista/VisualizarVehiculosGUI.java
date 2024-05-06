@@ -6,12 +6,10 @@
  */
 package TerraRental.Vista;
 
-import TerraRental.Controlador.Admin;
 import TerraRental.Controlador.Vehiculo;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

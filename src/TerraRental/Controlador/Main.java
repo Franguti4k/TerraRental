@@ -1,6 +1,5 @@
 package TerraRental.Controlador;
 
-import TerraRental.Controlador.Admin;
 import TerraRental.Vista.TerraRentalGUI;
 
 /**
@@ -16,7 +15,7 @@ public class Main {
      * @param args argumentos del metodo main
      */
     public static void main(String[] args) {
-        Admin.getInstance().inicializarSistema();
+        TerraRental.getInstance().inicializarSistema();
         new TerraRentalGUI();
     }
 
