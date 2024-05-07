@@ -66,7 +66,8 @@ public class VisualizarVehiculosGUI extends JFrame {
                 // Aquí puedes implementar la lógica para reservar el vehículo
                 String texto = textField.getText();
                 // Ejemplo: Mostrar un mensaje con el texto del cuadro de texto
-                JOptionPane.showMessageDialog(null, "Texto ingresado: " + texto);
+                //JOptionPane.showMessageDialog(null, "Texto ingresado: " + texto);
+                new SelectDateUI();
             }
         });
 
