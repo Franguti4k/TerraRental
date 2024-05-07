@@ -109,6 +109,7 @@ public class Cliente extends Usuario implements Menus {
             throw new PasswordIncorrectaException("Contraseña actual incorrecta");
         }
         setPassword(passwordNueva);
+        GestorDeArchivos.guardarClientes(TerraRental.getInstance().getClientes());
         System.out.println("Contraseña cambiada correctamente");
     }
 
