@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 public class ClienteGUI extends JFrame implements ActionListener {
     private Cliente usuarioActual;
-    private JButton btnReservarVehiculo,  btnDevolverVehiculo, btnCambiarPassword, btnSalir;
+    private JButton btnReservarVehiculo,  btnVisualizarVehiculo, btnCambiarPassword, btnSalir;
     /**
      * Constructor de la clase InterfazUsuario que recibe un usuario y muestra la interfaz gráfica para el usuario
      * @param usuario el usuario
@@ -33,30 +33,30 @@ public class ClienteGUI extends JFrame implements ActionListener {
         // Inicialización y configuración de los botones
         btnReservarVehiculo = new JButton("Reservar vehiculo");
 
-        btnDevolverVehiculo = new JButton("Devolver vehiculo");
+        btnVisualizarVehiculo = new JButton("Ver reserva");
         btnCambiarPassword = new JButton("Cambiar Contraseña");
         btnSalir = new JButton("Salir");
 
         Dimension buttonSize = new Dimension(70, 50);
         btnReservarVehiculo.setPreferredSize(buttonSize);
-        btnDevolverVehiculo.setPreferredSize(buttonSize);
+        btnVisualizarVehiculo.setPreferredSize(buttonSize);
         btnCambiarPassword.setPreferredSize(buttonSize);
         btnSalir.setPreferredSize(buttonSize);
 
         btnReservarVehiculo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnDevolverVehiculo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnVisualizarVehiculo.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnCambiarPassword.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         // Añadimos los botones al panel
         panel.add(btnReservarVehiculo);
-        panel.add(btnDevolverVehiculo);
+        panel.add(btnVisualizarVehiculo);
         panel.add(btnCambiarPassword);
         panel.add(btnSalir);
 
         // Añadimos los listeners a los botones
         btnReservarVehiculo.addActionListener(this);
-        btnDevolverVehiculo.addActionListener(this);
+        btnVisualizarVehiculo.addActionListener(this);
         btnCambiarPassword.addActionListener(this);
         btnSalir.addActionListener(this);
 
@@ -71,10 +71,10 @@ public class ClienteGUI extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnReservarVehiculo) {
-            new VisualizarVehiculosGUI(TerraRental.getInstance().getVehiculos()); // Abre la ventana para reservar un vehiculo
-        }  /*else if (e.getSource() == btnDevolverVehiculo) {
-            new DevolverLibroGUI(usuarioActual, TerraRental.getInstance().getVehiculos()); // Abre la ventana para devolver un vehiculo
-        }*/ else if (e.getSource() == btnCambiarPassword) {
+            new VisualizarVehiculosGUI(usuarioActual, TerraRental.getInstance().getVehiculos()); // Abre la ventana para reservar un vehiculo
+        } else if (e.getSource() == btnVisualizarVehiculo) {
+            new VisualizarReservaGUI(usuarioActual); // Abre la ventana para ver la reserva
+        } else if (e.getSource() == btnCambiarPassword) {
             new RestablecerContrasenaGUI(TerraRental.getInstance().getClientes()); // Abre la ventana para cambiar la contraseña
         } else if (e.getSource() == btnSalir) {
             dispose(); // Cierra la ventana

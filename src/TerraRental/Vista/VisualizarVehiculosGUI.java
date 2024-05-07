@@ -6,6 +6,7 @@
  */
 package TerraRental.Vista;
 
+import TerraRental.Controlador.Cliente;
 import TerraRental.Controlador.Vehiculo;
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 
 public class VisualizarVehiculosGUI extends JFrame {
 
-    public VisualizarVehiculosGUI(ArrayList<Vehiculo> vehiculos) {
+    public VisualizarVehiculosGUI(Cliente clienteActual, ArrayList<Vehiculo> vehiculos) {
         setTitle("Vehículos Disponibles");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(600, 400);
@@ -63,11 +64,11 @@ public class VisualizarVehiculosGUI extends JFrame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Aquí puedes implementar la lógica para reservar el vehículo
-                String texto = textField.getText();
-                // Ejemplo: Mostrar un mensaje con el texto del cuadro de texto
-                //JOptionPane.showMessageDialog(null, "Texto ingresado: " + texto);
-                new SelectDateUI();
+
+                String matricula = textField.getText();
+
+                new SelectDateUI(clienteActual, matricula);
+                dispose();
             }
         });
 

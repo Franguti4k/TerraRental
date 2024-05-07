@@ -4,6 +4,8 @@ package TerraRental.Controlador;
 import TerraRental.Vista.Menus;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
 /**
  * @author Francisco Javier Gutierrez Gallego
  * @author Gina Andrea Ramirez Guerrero
@@ -160,6 +162,43 @@ public class TerraRental extends Usuario implements Menus {
     public static class CamposVaciosException extends Exception {
         public CamposVaciosException(String mensaje) {
             super(mensaje);
+        }
+    }
+
+    /**
+     * Funcion que reserva el vehiculo, seleccionado por la matricula, al cliente
+     * @param matricula Recibe la matricula del vehiculo que se quiere reservar
+     * @param fechaInicio Recibe la fecha de inicio de la reserva
+     * @param fechaFinal Recibe la fecha final de la reserva
+     * @param cliente Recibe el cliente que hace la reserva
+     */
+    public void Reservar(String matricula, Fecha fechaInicio, Fecha fechaFinal, Cliente cliente) {
+        Vehiculo vehiculoReservado = null;
+        for (Vehiculo vehiculo : vehiculos) {
+            if (vehiculo.getMatricula().equals(matricula)) {
+                vehiculoReservado = vehiculo;
+                vehiculos.remove(vehiculo);
+                GestorDeArchivos.guardarVehiculos(vehiculos);
+                break;
+            }
+        }
+        Reserva reserva = new Reserva(vehiculoReservado, fechaInicio, fechaFinal);
+        for (Cliente cliente1 : clientes){
+            if(cliente1.equals(cliente)){
+                cliente1.setReserva(reserva);
+            }
+        }
+        GestorDeArchivos.guardarClientes(clientes);
+    }
+    //funcion en construccion
+    public void devolverVehiculo(Cliente cliente){
+        for (Cliente cliente1 : clientes){
+            if(cliente1.equals(cliente)){
+                vehiculos.add(cliente1.getReserva().getVehiculoReserva());
+                cliente1.setReserva(null);
+                GestorDeArchivos.guardarVehiculos(vehiculos);
+                GestorDeArchivos.guardarClientes(clientes);
+            }
         }
     }
 

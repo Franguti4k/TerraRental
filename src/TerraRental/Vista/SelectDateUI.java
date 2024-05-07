@@ -4,15 +4,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import TerraRental.Controlador.Cliente;
 import TerraRental.Controlador.Fecha;
+import TerraRental.Controlador.TerraRental;
 
 public class SelectDateUI extends JFrame implements ActionListener {
+    private String matricula;
+    private Cliente clienteActual;
     private JTextField endDay, endMon, endYear, staDay, staMon, staYear;
     private JButton btnAccept, btnCancel;
 
-    public SelectDateUI() {
+    public SelectDateUI(Cliente clienteActual, String matricula) {
         setTitle("Seleccionar Fechas");
-
+        this.matricula = matricula;
+        this.clienteActual = clienteActual;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300);
         setLocationRelativeTo(null);
@@ -109,8 +115,12 @@ public class SelectDateUI extends JFrame implements ActionListener {
             int iEndMon = Integer.parseInt(endMon.getText());
             int iEndYear = Integer.parseInt(endYear.getText());
 
+
             Fecha fSta = new Fecha(iStaDay, iStaMon, iStaYear);
             Fecha fEnd = new Fecha(iEndDay, iEndMon, iEndYear);
+            TerraRental.getInstance().Reservar(matricula, fSta, fEnd, clienteActual);
+            JOptionPane.showMessageDialog(null, "Vehiculo reservado correctamente");
+            dispose();
         } else if (e.getSource() == btnCancel) {
             dispose();
         }

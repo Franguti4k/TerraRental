@@ -1,5 +1,8 @@
 package TerraRental.Controlador;
 
+import TerraRental.Modelo.Cambio;
+import TerraRental.Modelo.Categoria;
+import TerraRental.Modelo.Tipo;
 import TerraRental.Vista.ClienteGUI;
 import TerraRental.Vista.Menus;
 
@@ -17,75 +20,89 @@ public class Cliente extends Usuario implements Menus {
 
     private Fecha fecha_Nacimiento;
     private Fecha cadCarnet;
-    private Vehiculo vehiculoAlquilado;
-
+    private Reserva reserva;
 
 
     /**
      * Constructor de Cliente
-     * @param DNI DNI del cliente
-     * @param nombre Nombre del cliente
-     * @param password contraseña del cliente
+     *
+     * @param DNI              DNI del cliente
+     * @param nombre           Nombre del cliente
+     * @param password         contraseña del cliente
      * @param fecha_Nacimiento fecha de nacimiento
-     * @param cadCarnet fecha de caducidad del carnet de conducir
-     * @param vehiculoAlquilado vehiculo alquilado por el cliente
+     * @param cadCarnet        fecha de caducidad del carnet de conducir
+     * @param reserva          reserva realizada por el cliente por el cliente
      */
-    public Cliente(String DNI, String nombre, String password, Fecha fecha_Nacimiento, Fecha cadCarnet, Vehiculo vehiculoAlquilado) {
+    public Cliente(String DNI, String nombre, String password, Fecha fecha_Nacimiento, Fecha cadCarnet, Reserva reserva) {
         super(DNI, nombre, password);
         this.fecha_Nacimiento = fecha_Nacimiento;
         this.cadCarnet = cadCarnet;
-        this.vehiculoAlquilado = vehiculoAlquilado;
+        this.reserva = reserva;
     }
 
     /**
      * get de fecha de nacimiento
+     *
      * @return devuelve la fecha de nacimiento
      */
-    public Fecha getFecha_Nacimiento() { return fecha_Nacimiento; }
+    public Fecha getFecha_Nacimiento() {
+        return fecha_Nacimiento;
+    }
 
     /**
      * set de fecha de nacimiento
+     *
      * @param fecha_Nacimiento recibe una fecha de nacimiento
      */
-    public void setFecha_Nacimiento(Fecha fecha_Nacimiento) { this.fecha_Nacimiento = fecha_Nacimiento; }
+    public void setFecha_Nacimiento(Fecha fecha_Nacimiento) {
+        this.fecha_Nacimiento = fecha_Nacimiento;
+    }
 
     /**
      * Get de vehiculoAlquilado
+     *
      * @return devuelve vehiculoAlquilado
      */
-    public Vehiculo getVehiculoAlquilado() {
-        return vehiculoAlquilado;
+    public Reserva getReserva() {
+        return reserva;
     }
 
     /**
      * set de vehiculoAlquilado
-     * @param vehiculoAlquilado recibe vehiculoAlquilado
+     *
+     * @param reserva recibe reserva
      */
-    public void setVehiculoAlquilado(Vehiculo vehiculoAlquilado) {
-        this.vehiculoAlquilado = vehiculoAlquilado;
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
 
     /**
      * get de cadCarnet
+     *
      * @return devuelve cadCarnet
      */
-    public Fecha getCadCarnet() { return cadCarnet; }
+    public Fecha getCadCarnet() {
+        return cadCarnet;
+    }
 
     /**
      * set de cadCarnet
+     *
      * @param cadCarnet recibe cadCarnet
      */
 
-    public void setCadCarnet(Fecha cadCarnet) { this.cadCarnet = cadCarnet; }
-
+    public void setCadCarnet(Fecha cadCarnet) {
+        this.cadCarnet = cadCarnet;
+    }
 
 
     //Implementar metodos de cliente:  Selección de categoría, Detalles del vehículo, Selección de fechas de alquiler, Reserva y pago
 
     /**
      * Método que cambia la contraseña del usuario actual
+     *
      * @param passwordActual La contraseña actual
-     * @param passwordNueva La nueva contraseña
+     * @param passwordNueva  La nueva contraseña
      */
     public void cambiarPassword(String passwordActual, String passwordNueva) throws PasswordIncorrectaException {
         if (!ComprobarPassword(passwordActual)) {
@@ -98,7 +115,7 @@ public class Cliente extends Usuario implements Menus {
     /**
      * Excepción propia para cuando la contraseña actual es incorrecta
      */
-    public class PasswordIncorrectaException extends Exception {
+    public static class PasswordIncorrectaException extends Exception {
         public PasswordIncorrectaException(String mensaje) {
             super(mensaje);
         }
@@ -106,7 +123,8 @@ public class Cliente extends Usuario implements Menus {
 
     /**
      * Método que busca un usuario por su DNI
-     * @param DNI DNI del usuario
+     *
+     * @param DNI      DNI del usuario
      * @param Usuarios ArrayList de usuarios
      * @return El usuario encontrado o null si no se encuentra
      */
@@ -125,6 +143,7 @@ public class Cliente extends Usuario implements Menus {
 
     /**
      * Metodo Metodo toArchivoString que devuelve un string con los datos del cliente
+     *
      * @return Devuelve un string con los datos del cliente
      */
     public String toArchivoString() {
@@ -132,21 +151,40 @@ public class Cliente extends Usuario implements Menus {
         String reservados = "";
         String fechaNac = "";
         String fechaCad = "";
+        /*
+         private int precio;
+    private Tipo tipo;
+    private Cambio cambio;
+    private int litros;
+    private int caballos;
+    private String color;
+    private double kilometraje;
+    private String matricula;
+         */
 
-        Vehiculo vehiculo = vehiculoAlquilado;
-        // Convierte cada vehiculo en una cadena con el formato categoria|marca|modelo|matricula
-       // String vehiculoInfo = vehiculo.getCategoria() + "," + vehiculo.getMarca() + "," + vehiculo.getModelo() + "," + vehiculo.getMatricula();
+        Reserva reserva1 = reserva;
+        if (reserva1 != null) {
+            //Convierte cada vehiculo en una cadena con el formato categoria|marca|modelo|matricula
+            String reservaInfo = reserva1.getVehiculoReserva().getCategoria() + "," + reserva1.getVehiculoReserva().getMarca() + "," + reserva1.getVehiculoReserva().getModelo()
+                    + "," + reserva1.getVehiculoReserva().getPrecio() + "," + reserva1.getVehiculoReserva().getTipo() + ","
+                    + reserva1.getVehiculoReserva().getCambio() + "," + reserva1.getVehiculoReserva().getLitros() + "," + reserva1.getVehiculoReserva().getCaballos()
+                    + "," + reserva1.getVehiculoReserva().getColor() + "," + reserva1.getVehiculoReserva().getKilometraje() + "," + reserva1.getVehiculoReserva().getMatricula()
+                    + "," + reserva1.getFechaInicio().getDia() + "," + reserva1.getFechaInicio().getMes() + "," + reserva1.getFechaInicio().getAnyo()
+                    + "," + reserva1.getFechaFinal().getDia() + "," + reserva1.getFechaFinal().getMes() + "," + reserva1.getFechaFinal().getAnyo();
 
-        // Añade el vehiculo a la cadena de reservados
-        //reservados += vehiculoInfo;
 
-        Fecha fecha1 = fecha_Nacimiento;
-        fechaNac = fecha1.getDia() + "," + fecha1.getMes() + "," + fecha1.getAnyo();
-        Fecha fecha2 = cadCarnet;
-        fechaCad = fecha2.getDia() + "," + fecha2.getMes() + "," + fecha2.getAnyo();
+            // Añade el vehiculo a la cadena de reservados
+            reservados += reservaInfo;
+        }
+
+    Fecha fecha1 = fecha_Nacimiento;
+    fechaNac =fecha1.getDia()+","+fecha1.getMes()+","+fecha1.getAnyo();
+    Fecha fecha2 = cadCarnet;
+    fechaCad =fecha2.getDia()+","+fecha2.getMes()+","+fecha2.getAnyo();
+
 
         // Devuelve una cadena con el formato DNI,nombre,password,pistaPassword y con los vehiculos reservados preparados anteriormente
-        return getDNI() + "," + getNombre() + "," +  getPassword() + "," + fechaNac + "," + fechaCad + reservados;
+        return getDNI() + "," + getNombre() + "," +  getPassword() + "," + fechaNac + "," + fechaCad + "," + reservados;
     }
 
     /**
@@ -171,6 +209,32 @@ public class Cliente extends Usuario implements Menus {
 
         Fecha fechaNacimiento = new Fecha(diaNacimiento, mesNacimiento, anioNacimiento);
         Fecha fechaCadCarnet = new Fecha(diaCadCarnet, mesCadCarnet, anioCadCarnet);
+
+        //Si el cliente tiene coche reservado
+        if (partes.length > 9){
+            Categoria categoria = Categoria.valueOf(partes[9]);
+            String marca = partes[10];
+            String modelo = partes[11];
+            int precio = Integer.parseInt(partes[12]);
+            Tipo tipo = Tipo.valueOf(partes[13]);
+            Cambio cambio = Cambio.valueOf(partes[14]);
+            int litros = Integer.parseInt(partes[15]); 
+            int caballos = Integer.parseInt(partes[16]);
+            String color = partes[17];
+            double kilometraje = Double.parseDouble(partes[18]);
+            String matricula = partes[19];
+            Vehiculo vehiculo = new Vehiculo(categoria , marca , modelo, precio , tipo , cambio , litros , caballos , color , kilometraje , matricula);
+            int diaInicio = Integer.parseInt(partes[20]);
+            int mesInicio = Integer.parseInt(partes[21]);
+            int yearInicio = Integer.parseInt(partes[22]);
+            Fecha fechaInicio = new Fecha(diaInicio, mesInicio, yearInicio);
+            int diaFinal = Integer.parseInt(partes[23]);
+            int mesFinal = Integer.parseInt(partes[24]);
+            int yearFinal = Integer.parseInt(partes[25]);
+            Fecha fechaFinal = new Fecha(diaFinal, mesFinal, yearFinal);
+            Reserva reserva1 = new Reserva(vehiculo, fechaInicio, fechaFinal);
+            return new Cliente(DNI, nombre, password, fechaNacimiento, fechaCadCarnet, reserva1);
+        }
 
         return new Cliente(DNI, nombre, password, fechaNacimiento, fechaCadCarnet, null);
     }
