@@ -23,7 +23,15 @@ public class VisualizarReservaGUI extends JFrame {
 
 
         // Crear un modelo de tabla para los vehículos
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                // Todas las celdas son no editables
+                return false;
+            }
+        };
+
         model.addColumn("Marca");
         model.addColumn("Modelo");
         model.addColumn("Categoría");
