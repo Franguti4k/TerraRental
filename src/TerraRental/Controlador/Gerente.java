@@ -20,9 +20,8 @@ public class Gerente extends Usuario implements Menus {
      * @param dni           DNI del gerente
      * @param nombre        Nombre del gerente
      * @param password      Contraseña del gerente
-     * @param pistaPassword Pista de la contraseña del gerente
      */
-    public Gerente(String dni, String nombre, String password, String pistaPassword) {
+    public Gerente(String dni, String nombre, String password) {
         super(dni, nombre, password);
     }
 
@@ -63,9 +62,9 @@ public class Gerente extends Usuario implements Menus {
         String DNI = partes[0];
         String nombre = partes[1];
         String password = partes[2];
-        String pistaPassword = partes[3];
 
-        return new Gerente(DNI, nombre, password, pistaPassword);
+
+        return new Gerente(DNI, nombre, password);
     }
 
     // Método para añadir un vehículo a la flota
