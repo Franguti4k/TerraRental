@@ -152,16 +152,7 @@ public class Cliente extends Usuario implements Menus {
         String reservados = "";
         String fechaNac = "";
         String fechaCad = "";
-        /*
-         private int precio;
-    private Tipo tipo;
-    private Cambio cambio;
-    private int litros;
-    private int caballos;
-    private String color;
-    private double kilometraje;
-    private String matricula;
-         */
+
 
         Reserva reserva1 = reserva;
         if (reserva1 != null) {
