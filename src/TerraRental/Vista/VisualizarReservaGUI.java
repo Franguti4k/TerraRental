@@ -1,6 +1,7 @@
 package TerraRental.Vista;
 
 import TerraRental.Controlador.Cliente;
+import TerraRental.Controlador.Reserva;
 import TerraRental.Controlador.TerraRental;
 import TerraRental.Controlador.Vehiculo;
 
@@ -49,14 +50,14 @@ public class VisualizarReservaGUI extends JFrame {
         // Agregar más columnas según sea necesario
 
         // Llenar la tabla con los datos de los vehículos
-
-        model.addRow(new Object[]{clienteActual.getReserva().getVehiculoReserva().getMarca(),
-                clienteActual.getReserva().getVehiculoReserva().getModelo(), clienteActual.getReserva().getVehiculoReserva().getCategoria(),
-                clienteActual.getReserva().getVehiculoReserva().getCambio(), clienteActual.getReserva().getVehiculoReserva().getTipo(),
-                clienteActual.getReserva().getVehiculoReserva().getMatricula(), clienteActual.getReserva().getVehiculoReserva().getPrecio() + "€",
-                clienteActual.getReserva().getFechaInicio().getDia(), clienteActual.getReserva().getFechaInicio().getMes(), clienteActual.getReserva().getFechaInicio().getAnyo(),
-                clienteActual.getReserva().getFechaFinal().getDia(), clienteActual.getReserva().getFechaFinal().getMes(), clienteActual.getReserva().getFechaFinal().getAnyo()});
-
+        for (Reserva reserva : clienteActual.getReservas()) {
+            model.addRow(new Object[]{reserva.getVehiculoReserva().getMarca(),
+                    reserva.getVehiculoReserva().getModelo(), reserva.getVehiculoReserva().getCategoria(),
+                    reserva.getVehiculoReserva().getCambio(), reserva.getVehiculoReserva().getTipo(),
+                    reserva.getVehiculoReserva().getMatricula(), reserva.getVehiculoReserva().getPrecio() + "€",
+                    reserva.getFechaInicio().getDia(), reserva.getFechaInicio().getMes(), reserva.getFechaInicio().getAnyo(),
+                    reserva.getFechaFinal().getDia(), reserva.getFechaFinal().getMes(), reserva.getFechaFinal().getAnyo()});
+        }
 
         // Crea una tabla con el modelo de tabla
         JTable table = new JTable(model);
@@ -74,7 +75,7 @@ public class VisualizarReservaGUI extends JFrame {
         btnDevolverVehiculo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TerraRental.getInstance().devolverVehiculo(clienteActual);
+                //TerraRental.getInstance().devolverVehiculo(clienteActual);
                 JOptionPane.showMessageDialog(null, "Vehiculo devuelto correctamente");
                 dispose();
             }

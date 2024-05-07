@@ -177,30 +177,36 @@ public class TerraRental extends Usuario implements Menus {
         for (Vehiculo vehiculo : vehiculos) {
             if (vehiculo.getMatricula().equals(matricula)) {
                 vehiculoReservado = vehiculo;
-                vehiculos.remove(vehiculo);
-                GestorDeArchivos.guardarVehiculos(vehiculos);
                 break;
             }
         }
         Reserva reserva = new Reserva(vehiculoReservado, fechaInicio, fechaFinal);
         for (Cliente cliente1 : clientes){
             if(cliente1.equals(cliente)){
-                cliente1.setReserva(reserva);
+                //Si el cliente no tiene reservas
+                if (cliente1.getReservas() == null){
+                    ArrayList<Reserva> aux = new ArrayList<>();
+                    aux.add(reserva);
+                    cliente1.setReservas(aux);
+                }
+                else {
+                    cliente1.getReservas().add(reserva);
+                }
             }
         }
         GestorDeArchivos.guardarClientes(clientes);
     }
     //funcion en construccion
-    public void devolverVehiculo(Cliente cliente){
+   /*public void devolverVehiculo(Cliente cliente){
         for (Cliente cliente1 : clientes){
             if(cliente1.equals(cliente)){
-                vehiculos.add(cliente1.getReserva().getVehiculoReserva());
-                cliente1.setReserva(null);
+                vehiculos.add(cliente1.getReservas().getVehiculoReserva());
+                cliente1.setReservas(null);
                 GestorDeArchivos.guardarVehiculos(vehiculos);
                 GestorDeArchivos.guardarClientes(clientes);
             }
         }
-    }
+    }*/
 
     /**
      * Metodo que muestra el menu de administrador

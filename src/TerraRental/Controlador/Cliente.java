@@ -20,7 +20,7 @@ public class Cliente extends Usuario implements Menus {
 
     private Fecha fecha_Nacimiento;
     private Fecha cadCarnet;
-    private Reserva reserva;
+    private ArrayList<Reserva> reservas;
 
 
     /**
@@ -31,13 +31,13 @@ public class Cliente extends Usuario implements Menus {
      * @param password         contraseña del cliente
      * @param fecha_Nacimiento fecha de nacimiento
      * @param cadCarnet        fecha de caducidad del carnet de conducir
-     * @param reserva          reserva realizada por el cliente por el cliente
+     * @param reservas          reserva realizada por el cliente por el cliente
      */
-    public Cliente(String DNI, String nombre, String password, Fecha fecha_Nacimiento, Fecha cadCarnet, Reserva reserva) {
+    public Cliente(String DNI, String nombre, String password, Fecha fecha_Nacimiento, Fecha cadCarnet, ArrayList<Reserva> reservas) {
         super(DNI, nombre, password);
         this.fecha_Nacimiento = fecha_Nacimiento;
         this.cadCarnet = cadCarnet;
-        this.reserva = reserva;
+        this.reservas = reservas;
     }
 
     /**
@@ -63,17 +63,17 @@ public class Cliente extends Usuario implements Menus {
      *
      * @return devuelve vehiculoAlquilado
      */
-    public Reserva getReserva() {
-        return reserva;
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
     }
 
     /**
      * set de vehiculoAlquilado
      *
-     * @param reserva recibe reserva
+     * @param reservas recibe reservas
      */
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
+    public void setReservas(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
     }
 
     /**
@@ -149,24 +149,31 @@ public class Cliente extends Usuario implements Menus {
      */
     public String toArchivoString() {
         // Convierte los vehiculos reservados en una cadena
+        //ArrayList<String> reservados = new ArrayList<>();
         String reservados = "";
         String fechaNac = "";
         String fechaCad = "";
 
 
-        Reserva reserva1 = reserva;
-        if (reserva1 != null) {
-            //Convierte cada vehiculo en una cadena con el formato categoria|marca|modelo|matricula
-            String reservaInfo = reserva1.getVehiculoReserva().getCategoria() + "," + reserva1.getVehiculoReserva().getMarca() + "," + reserva1.getVehiculoReserva().getModelo()
-                    + "," + reserva1.getVehiculoReserva().getPrecio() + "," + reserva1.getVehiculoReserva().getTipo() + ","
-                    + reserva1.getVehiculoReserva().getCambio() + "," + reserva1.getVehiculoReserva().getLitros() + "," + reserva1.getVehiculoReserva().getCaballos()
-                    + "," + reserva1.getVehiculoReserva().getColor() + "," + reserva1.getVehiculoReserva().getKilometraje() + "," + reserva1.getVehiculoReserva().getMatricula()
-                    + "," + reserva1.getFechaInicio().getDia() + "," + reserva1.getFechaInicio().getMes() + "," + reserva1.getFechaInicio().getAnyo()
-                    + "," + reserva1.getFechaFinal().getDia() + "," + reserva1.getFechaFinal().getMes() + "," + reserva1.getFechaFinal().getAnyo();
+        ArrayList<Reserva> reserva = reservas;
+        if (reserva != null) {
+            for (Reserva reserva1 : reservas) {
+                //Convierte cada vehiculo en una cadena con el formato categoria|marca|modelo|matricula
+                String reservaInfo = reserva1.getVehiculoReserva().getCategoria() + "," + reserva1.getVehiculoReserva().getMarca() + "," + reserva1.getVehiculoReserva().getModelo()
+                        + "," + reserva1.getVehiculoReserva().getPrecio() + "," + reserva1.getVehiculoReserva().getTipo() + ","
+                        + reserva1.getVehiculoReserva().getCambio() + "," + reserva1.getVehiculoReserva().getLitros() + "," + reserva1.getVehiculoReserva().getCaballos()
+                        + "," + reserva1.getVehiculoReserva().getColor() + "," + reserva1.getVehiculoReserva().getKilometraje() + "," + reserva1.getVehiculoReserva().getMatricula()
+                        + "," + reserva1.getFechaInicio().getDia() + "," + reserva1.getFechaInicio().getMes() + "," + reserva1.getFechaInicio().getAnyo()
+                        + "," + reserva1.getFechaFinal().getDia() + "," + reserva1.getFechaFinal().getMes() + "," + reserva1.getFechaFinal().getAnyo();
 
-
-            // Añade el vehiculo a la cadena de reservados
-            reservados += reservaInfo;
+                reservados += reservaInfo;
+                // Añade un punto y coma después de cada libro, excepto después del último
+                /*if (!(reserva1.equals(reservas.getLast()))) {
+                    reservados += ";";
+                }*/
+                // Añade el vehiculo a la cadena de reservados
+                //reservados.add(reservaInfo);
+            }
         }
 
     Fecha fecha1 = fecha_Nacimiento;
@@ -203,29 +210,52 @@ public class Cliente extends Usuario implements Menus {
         Fecha fechaCadCarnet = new Fecha(diaCadCarnet, mesCadCarnet, anioCadCarnet);
 
         //Si el cliente tiene coche reservado
-        if (partes.length > 9){
-            Categoria categoria = Categoria.valueOf(partes[9]);
-            String marca = partes[10];
-            String modelo = partes[11];
-            int precio = Integer.parseInt(partes[12]);
-            Tipo tipo = Tipo.valueOf(partes[13]);
-            Cambio cambio = Cambio.valueOf(partes[14]);
-            int litros = Integer.parseInt(partes[15]); 
-            int caballos = Integer.parseInt(partes[16]);
-            String color = partes[17];
-            double kilometraje = Double.parseDouble(partes[18]);
-            String matricula = partes[19];
-            Vehiculo vehiculo = new Vehiculo(categoria , marca , modelo, precio , tipo , cambio , litros , caballos , color , kilometraje , matricula);
-            int diaInicio = Integer.parseInt(partes[20]);
-            int mesInicio = Integer.parseInt(partes[21]);
-            int yearInicio = Integer.parseInt(partes[22]);
-            Fecha fechaInicio = new Fecha(diaInicio, mesInicio, yearInicio);
-            int diaFinal = Integer.parseInt(partes[23]);
-            int mesFinal = Integer.parseInt(partes[24]);
-            int yearFinal = Integer.parseInt(partes[25]);
-            Fecha fechaFinal = new Fecha(diaFinal, mesFinal, yearFinal);
-            Reserva reserva1 = new Reserva(vehiculo, fechaInicio, fechaFinal);
-            return new Cliente(DNI, nombre, password, fechaNacimiento, fechaCadCarnet, reserva1);
+        if (partes.length > 10){
+            int i = 9;
+            ArrayList<Reserva> reservas = new ArrayList<>();
+            while (i!= partes.length) {
+                Categoria categoria = Categoria.valueOf(partes[i]);
+                i++;
+                String marca = partes[i];
+                i++;
+                String modelo = partes[i];
+                i++;
+                int precio = Integer.parseInt(partes[i]);
+                i++;
+                Tipo tipo = Tipo.valueOf(partes[i]);
+                i++;
+                Cambio cambio = Cambio.valueOf(partes[i]);
+                i++;
+                int litros = Integer.parseInt(partes[i]);
+                i++;
+                int caballos = Integer.parseInt(partes[i]);
+                i++;
+                String color = partes[i];
+                i++;
+                double kilometraje = Double.parseDouble(partes[i]);
+                i++;
+                String matricula = partes[i];
+                i++;
+                Vehiculo vehiculo = new Vehiculo(categoria, marca, modelo, precio, tipo, cambio, litros, caballos, color, kilometraje, matricula);
+                int diaInicio = Integer.parseInt(partes[i]);
+                i++;
+                int mesInicio = Integer.parseInt(partes[i]);
+                i++;
+                int yearInicio = Integer.parseInt(partes[i]);
+                i++;
+                Fecha fechaInicio = new Fecha(diaInicio, mesInicio, yearInicio);
+                int diaFinal = Integer.parseInt(partes[i]);
+                i++;
+                int mesFinal = Integer.parseInt(partes[i]);
+                i++;
+                int yearFinal = Integer.parseInt(partes[i]);
+                i++;
+                Fecha fechaFinal = new Fecha(diaFinal, mesFinal, yearFinal);
+                Reserva reserva1 = new Reserva(vehiculo, fechaInicio, fechaFinal);
+                reservas.add(reserva1);
+            }
+                return new Cliente(DNI, nombre, password, fechaNacimiento, fechaCadCarnet, reservas);
+
         }
 
         return new Cliente(DNI, nombre, password, fechaNacimiento, fechaCadCarnet, null);
