@@ -21,6 +21,7 @@ public class Cliente extends Usuario implements Menus {
     private Fecha fecha_Nacimiento;
     private Fecha cadCarnet;
     private ArrayList<Reserva> reservas;
+    private static Cliente clienteActual;
 
 
     /**
@@ -40,6 +41,15 @@ public class Cliente extends Usuario implements Menus {
         this.cadCarnet = cadCarnet;
         this.reservas = reservas;
     }
+
+    /**
+     * Metodo para que otros metodos establezcan e identifiquen el cliente que actualmente tiene la sesion iniciada
+     * @param cliente
+     */
+    public static void setClienteActual(Cliente cliente) {
+        clienteActual = cliente;
+    }
+
 
     /**
      * get de fecha de nacimiento
@@ -102,17 +112,19 @@ public class Cliente extends Usuario implements Menus {
     /**
      * Método que cambia la contraseña del usuario actual
      *
-     * @param passwordActual La contraseña actual
+     *
      * @param passwordNueva  La nueva contraseña
      */
-    public void cambiarPassword(String passwordActual, String passwordNueva) throws PasswordIncorrectaException {
-        if (!ComprobarPassword(passwordActual)) {
-            throw new PasswordIncorrectaException("Contraseña actual incorrecta");
+    public void cambiarPassword(String passwordNueva) throws PasswordIncorrectaException {
+        if (clienteActual == null) {
+            throw new IllegalStateException("No hay ningún cliente con la sesión iniciada");
         }
-        setPassword(passwordNueva);
+
+        clienteActual.setPassword(passwordNueva);
         GestorDeArchivos.guardarClientes(TerraRental.getInstance().getClientes());
         System.out.println("Contraseña cambiada correctamente");
     }
+
 
     /**
      * Excepción propia para cuando la contraseña actual es incorrecta
