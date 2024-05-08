@@ -144,6 +144,23 @@ public class Cliente extends Usuario implements Menus {
 
 
     /**
+     * Metodo que busca a un usuario por su email
+     * @param email
+     * @param clientes
+     * @return
+     */
+    public static Cliente buscarUsuarioPorEmail(String email, ArrayList<Cliente> clientes) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getEmail().equals(email)) {
+                return cliente;
+            }
+        }
+        return null;
+    }
+
+
+
+    /**
      * Metodo Metodo toArchivoString que devuelve un string con los datos del cliente
      *
      * @return Devuelve un string con los datos del cliente

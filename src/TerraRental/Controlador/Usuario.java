@@ -123,6 +123,9 @@ public abstract class Usuario {
 
         if (uEmail.isEmpty() || dominio.isEmpty()) return false;
         if (!dominio.contains(".")) return false;
+        else {
+            return true;
+        }
 
     }
 
@@ -133,6 +136,13 @@ public abstract class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
+
+
+
+
+
 }
 
 
