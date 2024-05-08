@@ -107,6 +107,26 @@ public abstract class Usuario {
         return Character.isLetter(letra); // Devuelve true si el último carácter es una letra.
     }
 
+    public static class chkEmailExcxeption extends Exception {
+        public chkEmailExcxeption (String mensaje) { super(mensaje); }
+    }
+
+    public static boolean chkEmail (String email) {
+        String[] partes = email.split("@");
+
+        if (partes.length > 2) {
+            return false;
+        }
+
+        String uEmail = partes [0];
+        String dominio = partes [1];
+
+        if (uEmail.isEmpty() || dominio.isEmpty()) return false;
+        if (!dominio.contains(".")) return false;
+
+        return true;
+    }
+
     public String getEmail() {
         return email;
     }

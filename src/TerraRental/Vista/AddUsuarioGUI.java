@@ -1,9 +1,6 @@
 package TerraRental.Vista;
 
-import TerraRental.Controlador.TerraRental;
-import TerraRental.Controlador.Cliente;
-import TerraRental.Controlador.Fecha;
-import TerraRental.Controlador.GestorDeArchivos;
+import TerraRental.Controlador.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -136,6 +133,7 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
                 Fecha fechacad = new Fecha(diaCadCarnet, mesCadCarnet, anioCadCarnet);
 
                 if (fechaNac.isGreaterThan(fechacad)) throw new Fecha.fechaNoValidaException("La fecha del carné de conducir es anterior a la de nacimiento");
+                else if (Usuario.chkEmail(email)) throw new Usuario.chkEmailExcxeption("El email no es válido");
 
                 // Verificar que ningun campo este vacio
                 if (DNI.equals("") || nombre.equals("") || password.equals("") || confirmPassword.equals("")) {
@@ -156,6 +154,8 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
             } catch (TerraRental.ContraseñaNoCoincideException ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             } catch (Fecha.fechaNoValidaException ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            } catch (Usuario.chkEmailExcxeption ex) {
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else if (e.getSource() == btnCancelar) {
