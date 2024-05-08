@@ -9,18 +9,20 @@ public abstract class Usuario {
     private String DNI;
     private String nombre;
     private String password;
+    private String email;
 
     /**
      * Constructor de la clase Usuario
      * @param DNI DNI del usuario
      * @param nombre Nombre del usuario
      * @param password Contraseña del usuario
+     * @param email Email del usuario
      */
-    public Usuario(String DNI, String nombre, String password) {
+    public Usuario(String DNI, String nombre, String password, String email) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.password = password;
-
+        this.email = email;
     }
     /**
      * Metodo getDNI
@@ -103,6 +105,14 @@ public abstract class Usuario {
         }
         char letra = DNI.charAt(8);
         return Character.isLetter(letra); // Devuelve true si el último carácter es una letra.
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
 

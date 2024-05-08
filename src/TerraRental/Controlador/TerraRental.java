@@ -24,7 +24,7 @@ public class TerraRental extends Usuario implements Menus {
      * @param password contraseña de admin
      */
     public TerraRental(String DNI, String password) {
-        super(DNI,"", password);
+        super(DNI,"", password, "");
     }
 
     /**
@@ -109,12 +109,12 @@ public class TerraRental extends Usuario implements Menus {
      * @param DNI DNI del usuario
      * @param nombre Nombre del usuario
      * @param password Contraseña del usuario
-     * @param pistaPassword Pista de la contraseña del usuario
+     * @param email Correo electrónico del usuario
      * @param fechaNac Fecha de nacimiento
      * @param fechaCad Fecha de caducidad del carnet
      * @param Usuarios ArrayList de usuarios de la biblioteca
      */
-    public void addUsuario(String DNI, String nombre, String password, String pistaPassword, Fecha fechaNac, Fecha fechaCad, ArrayList<Cliente> Usuarios) throws DNIInvalidoException, UsuarioYaExisteException {
+    public void addUsuario(String DNI, String nombre, String password, String email, Fecha fechaNac, Fecha fechaCad, ArrayList<Cliente> Usuarios) throws DNIInvalidoException, UsuarioYaExisteException {
         // Validar el DNI
         if (!Cliente.validarDNI(DNI)) {
             throw new DNIInvalidoException("El DNI introducido no es válido.");
@@ -126,7 +126,7 @@ public class TerraRental extends Usuario implements Menus {
             }
         }
         // Crear un nuevo usuario y agregarlo a la lista
-        Cliente nuevoUsuario = new Cliente(DNI, nombre, password, fechaNac, fechaCad, null);
+        Cliente nuevoUsuario = new Cliente(DNI, nombre, password, email, fechaNac, fechaCad, null);
         Usuarios.add(nuevoUsuario);
     }
 

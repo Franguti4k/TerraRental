@@ -106,23 +106,31 @@ public class SelectDateUI extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == btnAccept) {
+        try {
+            if (e.getSource() == btnAccept) {
 
-            int iStaDay = Integer.parseInt(staDay.getText());
-            int iStaMon = Integer.parseInt(staMon.getText());
-            int iStaYear = Integer.parseInt(staYear.getText());
-            int iEndDay = Integer.parseInt(endDay.getText());
-            int iEndMon = Integer.parseInt(endMon.getText());
-            int iEndYear = Integer.parseInt(endYear.getText());
+                int iStaDay = Integer.parseInt(staDay.getText());
+                int iStaMon = Integer.parseInt(staMon.getText());
+                int iStaYear = Integer.parseInt(staYear.getText());
+                int iEndDay = Integer.parseInt(endDay.getText());
+                int iEndMon = Integer.parseInt(endMon.getText());
+                int iEndYear = Integer.parseInt(endYear.getText());
 
 
-            Fecha fSta = new Fecha(iStaDay, iStaMon, iStaYear);
-            Fecha fEnd = new Fecha(iEndDay, iEndMon, iEndYear);
-            TerraRental.getInstance().Reservar(matricula, fSta, fEnd, clienteActual);
-            JOptionPane.showMessageDialog(null, "Vehiculo reservado correctamente");
-            dispose();
-        } else if (e.getSource() == btnCancel) {
-            dispose();
+                Fecha fSta = new Fecha(iStaDay, iStaMon, iStaYear);
+                Fecha fEnd = new Fecha(iEndDay, iEndMon, iEndYear);
+                if (fSta.isGreaterThan(fEnd)) throw new Fecha.fechaNoValidaException("La fecha de inicio es más tarde a la de finalización");
+
+
+
+                TerraRental.getInstance().Reservar(matricula, fSta, fEnd, clienteActual);
+                JOptionPane.showMessageDialog(null, "Vehiculo reservado correctamente");
+                dispose();
+            } else if (e.getSource() == btnCancel) {
+                dispose();
+            }
+        } catch (Fecha.fechaNoValidaException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

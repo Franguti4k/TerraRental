@@ -29,12 +29,13 @@ public class Cliente extends Usuario implements Menus {
      * @param DNI              DNI del cliente
      * @param nombre           Nombre del cliente
      * @param password         contraseña del cliente
+     * @param email            E-mail del cliente
      * @param fecha_Nacimiento fecha de nacimiento
      * @param cadCarnet        fecha de caducidad del carnet de conducir
      * @param reservas          reserva realizada por el cliente por el cliente
      */
-    public Cliente(String DNI, String nombre, String password, Fecha fecha_Nacimiento, Fecha cadCarnet, ArrayList<Reserva> reservas) {
-        super(DNI, nombre, password);
+    public Cliente(String DNI, String nombre, String password, String email, Fecha fecha_Nacimiento, Fecha cadCarnet, ArrayList<Reserva> reservas) {
+        super(DNI, nombre, password, email);
         this.fecha_Nacimiento = fecha_Nacimiento;
         this.cadCarnet = cadCarnet;
         this.reservas = reservas;
@@ -183,7 +184,7 @@ public class Cliente extends Usuario implements Menus {
 
 
         // Devuelve una cadena con el formato DNI,nombre,password,pistaPassword y con los vehiculos reservados preparados anteriormente
-        return getDNI() + "," + getNombre() + "," +  getPassword() + "," + fechaNac + "," + fechaCad + "," + reservados;
+        return getDNI() + "," + getNombre() + "," +  getPassword() + "," + getEmail() + ',' + fechaNac + "," + fechaCad + "," + reservados;
     }
 
     /**
@@ -199,19 +200,20 @@ public class Cliente extends Usuario implements Menus {
         String DNI = partes[0];
         String nombre = partes[1];
         String password = partes[2];
-        int diaNacimiento = Integer.parseInt(partes[3]);
-        int mesNacimiento = Integer.parseInt(partes[4]);
-        int anioNacimiento = Integer.parseInt(partes[5]);
-        int diaCadCarnet = Integer.parseInt(partes[6]);
-        int mesCadCarnet = Integer.parseInt(partes[7]);
-        int anioCadCarnet = Integer.parseInt(partes[8]);
+        String email = partes [3];
+        int diaNacimiento = Integer.parseInt(partes[4]);
+        int mesNacimiento = Integer.parseInt(partes[5]);
+        int anioNacimiento = Integer.parseInt(partes[6]);
+        int diaCadCarnet = Integer.parseInt(partes[7]);
+        int mesCadCarnet = Integer.parseInt(partes[8]);
+        int anioCadCarnet = Integer.parseInt(partes[9]);
 
         Fecha fechaNacimiento = new Fecha(diaNacimiento, mesNacimiento, anioNacimiento);
         Fecha fechaCadCarnet = new Fecha(diaCadCarnet, mesCadCarnet, anioCadCarnet);
 
         //Si el cliente tiene coche reservado
-        if (partes.length > 10){
-            int i = 9;
+        if (partes.length > 11){
+            int i = 10;
             ArrayList<Reserva> reservas = new ArrayList<>();
             while (i!= partes.length) {
                 Categoria categoria = Categoria.valueOf(partes[i]);
@@ -254,11 +256,11 @@ public class Cliente extends Usuario implements Menus {
                 Reserva reserva1 = new Reserva(vehiculo, fechaInicio, fechaFinal);
                 reservas.add(reserva1);
             }
-                return new Cliente(DNI, nombre, password, fechaNacimiento, fechaCadCarnet, reservas);
+                return new Cliente(DNI, nombre, password, email, fechaNacimiento, fechaCadCarnet, reservas);
 
         }
 
-        return new Cliente(DNI, nombre, password, fechaNacimiento, fechaCadCarnet, null);
+        return new Cliente(DNI, nombre, password, email, fechaNacimiento, fechaCadCarnet, null);
     }
 
     @Override

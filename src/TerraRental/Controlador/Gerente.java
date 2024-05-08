@@ -21,8 +21,8 @@ public class Gerente extends Usuario implements Menus {
      * @param nombre        Nombre del gerente
      * @param password      Contraseña del gerente
      */
-    public Gerente(String dni, String nombre, String password) {
-        super(dni, nombre, password);
+    public Gerente(String dni, String nombre, String password, String email) {
+        super(dni, nombre, password, email);
     }
 
     public static Gerente buscarGerentePorDNI(String DNI, ArrayList<Gerente> Gerentes) {
@@ -46,7 +46,7 @@ public class Gerente extends Usuario implements Menus {
 
 
         // Devuelve una cadena con el formato DNI,nombre,password,pistaPassword
-        return getDNI() + "," + getNombre() + "," +  getPassword();
+        return getDNI() + "," + getNombre() + "," +  getPassword() + "," + getEmail();
     }
 
     /**
@@ -62,9 +62,10 @@ public class Gerente extends Usuario implements Menus {
         String DNI = partes[0];
         String nombre = partes[1];
         String password = partes[2];
+        String email = partes [3];
 
 
-        return new Gerente(DNI, nombre, password);
+        return new Gerente(DNI, nombre, password, email);
     }
 
     // Método para añadir un vehículo a la flota
