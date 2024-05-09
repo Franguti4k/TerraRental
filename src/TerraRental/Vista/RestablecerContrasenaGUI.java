@@ -1,6 +1,6 @@
 package TerraRental.Vista;
 
-import TerraRental.Controlador.Cliente;
+import TerraRental.Controlador.*;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 import java.util.Timer;
+
+import static TerraRental.Controlador.Usuario.chkEmail;
 
 public class RestablecerContrasenaGUI extends JFrame {
     private JTextField campoEmail;
@@ -43,9 +45,14 @@ public class RestablecerContrasenaGUI extends JFrame {
         botonEnviarCodigo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String email = campoEmail.getText();
-                enviarCodigo(email);
-                voidCodeAfter(300000);
+
+                if (!chkEmail(campoEmail.getText())) {
+                    JOptionPane.showMessageDialog(null, "El email no es válido", "Error", JOptionPane.ERROR_MESSAGE);                }
+                 else {
+                    enviarCodigo(campoEmail.getText());
+                    voidCodeAfter(300000);
+
+                }
             }
         });
         add(botonEnviarCodigo, c);

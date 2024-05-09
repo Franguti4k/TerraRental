@@ -114,7 +114,7 @@ public abstract class Usuario {
     public static boolean chkEmail (String email) {
         String[] partes = email.split("@");
 
-        if (partes.length > 2) {
+        if (partes.length != 2) {
             return false;
         }
 
