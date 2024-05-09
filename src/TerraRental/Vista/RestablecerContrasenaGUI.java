@@ -9,9 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Properties;
-import java.util.Random;
+import java.util.*;
+import java.util.Timer;
 
 public class RestablecerContrasenaGUI extends JFrame {
     private JTextField campoEmail;
@@ -46,6 +45,7 @@ public class RestablecerContrasenaGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String email = campoEmail.getText();
                 enviarCodigo(email);
+                voidCodeAfter(300000);
             }
         });
         add(botonEnviarCodigo, c);
@@ -142,9 +142,24 @@ public class RestablecerContrasenaGUI extends JFrame {
             transport.connect(host, from, pass);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-            JOptionPane.showMessageDialog(null, "Código enviado con éxito."); // Añade esta línea
+            JOptionPane.showMessageDialog(null, "Código enviado con éxito.\nCaduca en 5 minutos.");
+
         } catch (MessagingException me) {
             me.printStackTrace();
         }
+    }
+
+    public void voidCodeAfter (int time) {
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                JOptionPane.showMessageDialog(null, "El código ha caducado");
+                timer.cancel();
+                dispose();
+            }
+        };
+
+        timer.schedule(timerTask, time);
     }
 }
