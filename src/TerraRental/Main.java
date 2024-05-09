@@ -1,5 +1,6 @@
-package TerraRental.Controlador;
+package TerraRental;
 
+import TerraRental.Controlador.TerraRental;
 import TerraRental.Vista.TerraRentalGUI;
 
 /**
