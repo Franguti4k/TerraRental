@@ -126,7 +126,6 @@ public abstract class Usuario {
         else {
             return true;
         }
-
     }
 
     public String getEmail() {
@@ -136,13 +135,6 @@ public abstract class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
-
-
-
-
-
 }
 
 
