@@ -212,7 +212,7 @@ public class TerraRental extends Usuario implements Menus {
      * Metodo que muestra el menu de administrador
      * @param Clientes ArrayList de clientes
      * @param Vehiculos ArrayList de Vehiculos
-     * @param Vehiculos ArrayList de Gerentes
+     * @param Gerentes ArrayList de Gerentes
      */
     @Override
     public void Menu(ArrayList<Cliente> Clientes, ArrayList<Vehiculo> Vehiculos, ArrayList<Gerente> Gerentes) {
