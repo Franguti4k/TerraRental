@@ -113,9 +113,8 @@ public class Cliente extends Usuario implements Menus {
      * Método que cambia la contraseña del usuario actual
      *
      * @param passwordNueva La nueva contraseña
-     * @param contrasena
      */
-    public void cambiarPassword(String passwordNueva, String contrasena) throws PasswordIncorrectaException {
+    public void cambiarPassword(String passwordNueva) throws PasswordIncorrectaException {
         if (clienteActual == null) {
             throw new IllegalStateException("No hay ningún cliente con la sesión iniciada");
         }

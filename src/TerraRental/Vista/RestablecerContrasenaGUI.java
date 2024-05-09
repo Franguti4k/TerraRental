@@ -92,10 +92,12 @@ public class RestablecerContrasenaGUI extends JFrame {
                 if (cliente == null) {
                     JOptionPane.showMessageDialog(null, "Usuario no encontrado.");
                     return;
+                } else  {
+                    cliente.setClienteActual(cliente);
                 }
 
                 try {
-                    cliente.cambiarPassword(cliente.getPassword(), contrasena);
+                    cliente.cambiarPassword(contrasena);
                     JOptionPane.showMessageDialog(null, "Contraseña cambiada correctamente.");
                     dispose();
                 } catch (Cliente.PasswordIncorrectaException ex) {
@@ -109,6 +111,7 @@ public class RestablecerContrasenaGUI extends JFrame {
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
+
     }
 
     public void enviarCodigo(String email) {
