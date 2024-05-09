@@ -123,8 +123,9 @@ public abstract class Usuario {
 
         if (uEmail.isEmpty() || dominio.isEmpty()) return false;
         if (!dominio.contains(".")) return false;
-
-        return true;
+        else {
+            return true;
+        }
     }
 
     public String getEmail() {
