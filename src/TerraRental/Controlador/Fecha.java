@@ -61,7 +61,7 @@ public class Fecha {
             else if (mes != 2)
                 return 30;
 
-            else if (anyo % 400 != 0)
+            else if (anyo % 400 == 0 || (anyo % 4 == 0 && anyo % 100 != 0))
                return 29;
 
             else
