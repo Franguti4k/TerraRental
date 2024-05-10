@@ -1,5 +1,9 @@
 package TerraRental.Controlador;
-
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Santiago Valderrama Flores
+ */
 public class Fecha {
     private int dia;
     private int mes;
@@ -7,9 +11,9 @@ public class Fecha {
 
     /**
      * Constructor de la clase Fecha
-     * @param dia
-     * @param mes
-     * @param anyo
+     * @param dia recibe dia
+     * @param mes recibe mes
+     * @param anyo recibe año
      */
     public Fecha(int dia, int mes, int anyo) {
         this.dia = dia;
@@ -53,6 +57,12 @@ public class Fecha {
      */
     public void setAnyo(int anyo) { this.anyo = anyo; }
 
+    /**
+     * Funcion que comprueba cuantos dias hay en el mes y si el año es bisisesto
+     * @param mes recibe mes
+     * @param anyo recibe año
+     * @return devuelve el numero de dias del mes
+     */
     public static int diasEnMes(int mes, int anyo) {
         if (mes <= 7) {
             if (mes % 2 == 1)
@@ -76,6 +86,13 @@ public class Fecha {
         }
     }
 
+    /**
+     * Funcion que comprueba si la fecha es valida
+     * @param dia recibe dia
+     * @param mes recibe mes
+     * @param anyo recibe año
+     * @return devuelve un booleano
+     */
     public static boolean fechaValida(int dia, int mes, int anyo) {
 
         if (anyo < 0 || mes < 1 || mes > 12 || dia < 1 || dia > diasEnMes(mes, anyo))

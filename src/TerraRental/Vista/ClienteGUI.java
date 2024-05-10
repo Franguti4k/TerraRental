@@ -6,6 +6,12 @@ import TerraRental.Controlador.Cliente;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Santiago Valderrama Flores
+ */
+
 public class ClienteGUI extends JFrame implements ActionListener {
     private Cliente usuarioActual;
     private JButton btnReservarVehiculo,  btnVisualizarVehiculo, btnCambiarPassword, btnSalir;

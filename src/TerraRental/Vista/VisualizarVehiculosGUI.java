@@ -15,7 +15,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Objects;
 
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Santiago Valderrama Flores
+ */
 
 public class VisualizarVehiculosGUI extends JFrame {
 
@@ -75,9 +81,12 @@ public class VisualizarVehiculosGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 String matricula = textField.getText();
-
-                new SelectDateUI(clienteActual, matricula);
-                dispose();
+                if(e.getSource() == button && Objects.equals(matricula, "")){
+                    JOptionPane.showMessageDialog(null, "No ha introducido ninguna matricula");
+                }else {
+                    new SelectDateUI(clienteActual, matricula);
+                    dispose();
+                }
             }
         });
 

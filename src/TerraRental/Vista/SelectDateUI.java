@@ -8,6 +8,11 @@ import java.awt.event.ActionListener;
 import TerraRental.Controlador.Cliente;
 import TerraRental.Controlador.Fecha;
 import TerraRental.Controlador.TerraRental;
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Santiago Valderrama Flores
+ */
 
 public class SelectDateUI extends JFrame implements ActionListener {
     private String matricula;

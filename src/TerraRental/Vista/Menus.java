@@ -5,6 +5,11 @@ import TerraRental.Controlador.Gerente;
 import TerraRental.Controlador.Vehiculo;
 
 import java.util.ArrayList;
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Santiago Valderrama Flores
+ */
 
 /**
  * Interfaz Menus

@@ -1,4 +1,9 @@
 package TerraRental.Controlador;
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Santiago Valderrama Flores
+ */
 
 /**
  * Clase reserva que encapsula las reservas que se realizan

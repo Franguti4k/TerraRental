@@ -7,6 +7,11 @@ import TerraRental.Controlador.Gerente;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Santiago Valderrama Flores
+ */
 
 /**
  * Clase que representa la interfaz gráfica para iniciar sesión
