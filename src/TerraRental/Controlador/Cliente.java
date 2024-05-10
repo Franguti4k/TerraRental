@@ -177,7 +177,6 @@ public class Cliente extends Usuario implements Menus {
      */
     public String toArchivoString() {
         // Convierte los vehiculos reservados en una cadena
-        //ArrayList<String> reservados = new ArrayList<>();
         String reservados = "";
         String fechaNac = "";
         String fechaCad = "";
@@ -195,12 +194,7 @@ public class Cliente extends Usuario implements Menus {
                         + "," + reserva1.getFechaFinal().getDia() + "," + reserva1.getFechaFinal().getMes() + "," + reserva1.getFechaFinal().getAnyo();
 
                 reservados += reservaInfo;
-                // Añade un punto y coma después de cada libro, excepto después del último
-                /*if (!(reserva1.equals(reservas.getLast()))) {
-                    reservados += ";";
-                }*/
-                // Añade el vehiculo a la cadena de reservados
-                //reservados.add(reservaInfo);
+
             }
         }
 
