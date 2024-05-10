@@ -40,13 +40,13 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
         setSize(350, 280);
 
         // Crear y configurar JPanel con GridLayout
-        JPanel panel = new JPanel(new GridLayout(12, 2, 10, 10));
+        JPanel panel = new JPanel(new GridLayout(17, 2, 10, 10));
 
 
         // Etiquetas y campos de texto
-        panel.add(new JLabel("DNI:"));
-        txtDNI = new JTextField();
-        panel.add(txtDNI);
+
+        panel.add(new JLabel("Datos personales"));
+        panel.add(new JLabel(""));
 
         panel.add(new JLabel("Nombre:"));
         txtNombre = new JTextField();
@@ -64,6 +64,18 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
         txtEmail = new JTextField();
         panel.add(txtEmail);
 
+
+        panel.add(new JLabel(""));
+        panel.add(new JLabel(""));
+
+
+        panel.add(new JLabel("Detalles del DNI"));
+        panel.add(new JLabel(""));
+
+        panel.add(new JLabel("DNI:"));
+        txtDNI = new JTextField();
+        panel.add(txtDNI);
+
         panel.add(new JLabel("Dia de nacimiento:"));
         txtFechaNacDia = new JTextField();
         panel.add(txtFechaNacDia);
@@ -75,6 +87,14 @@ public class AddUsuarioGUI extends JFrame implements ActionListener {
         panel.add(new JLabel("Año de nacimiento:"));
         txtFechaNacAnyo = new JTextField();
         panel.add(txtFechaNacAnyo);
+
+
+        panel.add(new JLabel(""));
+        panel.add(new JLabel(""));
+
+
+        panel.add(new JLabel("Datos del carné de conducir"));
+        panel.add(new JLabel(""));
 
         panel.add(new JLabel("Dia de Caducidad:"));
         txtFechaCadDia = new JTextField();
