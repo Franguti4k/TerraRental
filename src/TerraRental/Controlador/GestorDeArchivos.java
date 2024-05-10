@@ -4,7 +4,11 @@ import java.io.*;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Santiago Valderrama Flores
+ */
 public class  GestorDeArchivos {
     //Ruta de los archivos (pongo final para que no se puedan modificar)
     private  static final String ARCHIVO_CLIENTES = "Clientes.txt";

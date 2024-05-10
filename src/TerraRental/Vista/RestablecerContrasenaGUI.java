@@ -13,6 +13,11 @@ import java.util.*;
 import java.util.Timer;
 
 import static TerraRental.Controlador.Usuario.chkEmail;
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Santiago Valderrama Flores
+ */
 
 public class RestablecerContrasenaGUI extends JFrame {
     private JTextField campoEmail;

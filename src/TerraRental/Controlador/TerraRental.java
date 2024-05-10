@@ -9,7 +9,6 @@ import java.util.Objects;
 /**
  * @author Francisco Javier Gutierrez Gallego
  * @author Gina Andrea Ramirez Guerrero
- * @author Pedro Zuñeda Diego
  * @author Santiago Valderrama Flores
  */
 public class TerraRental extends Usuario implements Menus {
@@ -196,17 +195,25 @@ public class TerraRental extends Usuario implements Menus {
         }
         GestorDeArchivos.guardarClientes(clientes);
     }
-    //funcion en construccion
-   /*public void devolverVehiculo(Cliente cliente){
+
+    /**
+     * Funcion para devolver un vehiculo
+     * @param cliente recibe cliente
+     * @param matricula recibe matricula
+     */
+   public void devolverVehiculo(Cliente cliente, String matricula){
         for (Cliente cliente1 : clientes){
             if(cliente1.equals(cliente)){
-                vehiculos.add(cliente1.getReservas().getVehiculoReserva());
-                cliente1.setReservas(null);
-                GestorDeArchivos.guardarVehiculos(vehiculos);
-                GestorDeArchivos.guardarClientes(clientes);
+                for (Reserva reserva : cliente1.getReservas()){
+                    if (reserva.getVehiculoReserva().getMatricula().equals(matricula)){
+                        cliente1.getReservas().remove(reserva);
+                        GestorDeArchivos.guardarClientes(clientes);
+                        break;
+                    }
+                }
             }
         }
-    }*/
+    }
 
     /**
      * Metodo que muestra el menu de administrador

@@ -11,6 +11,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Objects;
+
+/**
+ * @author Francisco Javier Gutierrez Gallego
+ * @author Gina Andrea Ramirez Guerrero
+ * @author Santiago Valderrama Flores
+ */
 
 public class VisualizarReservaGUI extends JFrame {
     private Cliente clienteActual;
@@ -66,18 +73,26 @@ public class VisualizarReservaGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(table);
         getContentPane().add(scrollPane, BorderLayout.CENTER);
 
-        //crea un boton para devolver el vehiculo
-        JButton btnDevolverVehiculo = new JButton("Devolver");
         JPanel panel = new JPanel();
+        JTextField textField = new JTextField(20); // Cuadro de texto
+        JLabel label = new JLabel("Introduce matrícula: "); // Texto al lado del cuadro de texto
+        JButton btnDevolverVehiculo = new JButton("Devolver"); // Botón
+        panel.add(label);
+        panel.add(textField);
         panel.add(btnDevolverVehiculo);
 
         // Manejar el evento del botón
         btnDevolverVehiculo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TerraRental.getInstance().devolverVehiculo(clienteActual);
-                JOptionPane.showMessageDialog(null, "Vehiculo devuelto correctamente");
-                dispose();
+                String matricula = textField.getText();
+                if(e.getSource() == btnDevolverVehiculo && Objects.equals(matricula, "")){
+                    JOptionPane.showMessageDialog(null, "No ha introducido ninguna matricula");
+                }else {
+                    TerraRental.getInstance().devolverVehiculo(clienteActual, matricula);
+                    JOptionPane.showMessageDialog(null, "Vehiculo devuelto correctamente");
+                    dispose();
+                }
             }
         });
 
