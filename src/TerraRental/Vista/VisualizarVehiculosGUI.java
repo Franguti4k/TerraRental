@@ -79,10 +79,19 @@ public class VisualizarVehiculosGUI extends JFrame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                boolean check = false;
 
-                String matricula = textField.getText();
-                if(e.getSource() == button && Objects.equals(matricula, "")){
-                    JOptionPane.showMessageDialog(null, "No ha introducido ninguna matricula");
+
+                    String matricula = textField.getText();
+                for (Vehiculo vehiculo : vehiculos){
+                    if(vehiculo.getMatricula().equals(matricula)){
+                        check = true;
+                        break;
+                    }
+                    check = false;
+                }
+                if(e.getSource() == button && Objects.equals(matricula, "") || !check){
+                    JOptionPane.showMessageDialog(null, "No ha introducido ninguna matricula o no existe");
                 }else {
                     new SelectDateUI(clienteActual, matricula);
                     dispose();
