@@ -191,7 +191,7 @@ public class Cliente extends Usuario implements Menus {
                         + reserva1.getVehiculoReserva().getCambio() + "," + reserva1.getVehiculoReserva().getLitros() + "," + reserva1.getVehiculoReserva().getCaballos()
                         + "," + reserva1.getVehiculoReserva().getColor() + "," + reserva1.getVehiculoReserva().getKilometraje() + "," + reserva1.getVehiculoReserva().getMatricula()
                         + "," + reserva1.getFechaInicio().getDia() + "," + reserva1.getFechaInicio().getMes() + "," + reserva1.getFechaInicio().getAnyo()
-                        + "," + reserva1.getFechaFinal().getDia() + "," + reserva1.getFechaFinal().getMes() + "," + reserva1.getFechaFinal().getAnyo();
+                        + "," + reserva1.getFechaFinal().getDia() + "," + reserva1.getFechaFinal().getMes() + "," + reserva1.getFechaFinal().getAnyo() + ",";
 
                 reservados += reservaInfo;
 
